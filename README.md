@@ -37,18 +37,37 @@ cessda.pasc.reverse (reverse proxy used as part of the Certbot automated securit
 cessda.pasc.admin 9Spring Boot amin console. The logs are useful to check progress of harvesting).
 
 
-
 ## Getting Started
 
 The various Jenkins jobs in the [DataCat](https://cit.cessda.eu/view/DataCat/) view are used to build, test and deploy the components. 
 They are tricket automatically when code changes are commited to any of the Bitbucket repos listed above.
 
-### Prerequisites
+
+### Common tasks
+
+Make sure the harvesters (dev, staging, live) are not run in parallel against the endpoints, as some of them will time out under the load, and not deliver all the available metadata. 
+Set the harvesting times via the [application.yml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/master/src/main/resources/application.yml) file for each branch.
+
+Adjust the read timeout, as required, via the [application.yml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/master/src/main/resources/application.yml) file for each branch.
+
+To add endpoint/update URL of existing endpoint, edit the following files:
+
+[oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
+[NESSTAR epository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
+[harvester configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java), 
+[oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java), 
+[NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java), 
+[harvester tests](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java?mode=edit&spa=0&at=develop&fileviewer=file-view-default). 
+
+
+
+
+## Prerequisites
 
 You need to set the values of various environment variables TODO list them.
 
 
-### Installing
+## Installing
 
 The Jenkinsfile defines the build, test and deployment pipeline for each branch of each component.
 
