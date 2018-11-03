@@ -48,30 +48,29 @@ They are tricket automatically when code changes are commited to any of the Bitb
 You need to set the values of various environment variables TODO list them.
 
 
-
 ### Installing
 
-The [Jenkinsfile](Jenkinsfile) defines the build, test and deployment pipeline for each branch of each component.
+The Jenkinsfile defines the build, test and deployment pipeline for each branch of each component.
 
 
 ## Running the tests
  
-The [Jenkinsfile](Jenkinsfile) defines the test process.
-The [selenium directory](infrastructure/selenium/) contains the tests.
+The Jenkinsfile defines the test process for each branch of each component.
+The selenium directory contains the tests for each branch of each component.
 
 
 ## Deployment
 
-The [Jenkinsfile](Jenkinsfile) defines the deployment process.
+The Jenkinsfile defines the deployment process.
 
 
 ## Built With
 
-The [Jenkinsfile](Jenkinsfile) defines the build process.
+The Jenkinsfile defines the build process.
 
 ## Contributing
 
-Please read [CESSDA Guideline for developpers](https://bitbucket.org/cessda/cessda.guidelines.cit/wiki/Developers) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CESSDA Guideline for developers](https://bitbucket.org/cessda/cessda.guidelines.cit/wiki/Developers) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -79,11 +78,11 @@ See [Semantic Versioning](https://semver.org/) for guidance.
 
 ## Contributors
 
-You can find the list of contributors [here](CONTRIBUTORS.md)
+You can find the list of contributors in the CONTRIBUTORS.md file for each component repository.
 
 ## License
 
-See the [LICENSE](LICENSE) file for details
+See the LICENSE file in each component repository.
 
 ## Acknowledgments
 
