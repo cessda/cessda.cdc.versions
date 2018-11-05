@@ -53,11 +53,11 @@ Update the cessda.pasc.osmh-indexer.cmm README files for each branch after makin
 
 To add endpoint/update URL of existing endpoint, edit the following files (for each branch):
 [oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
-[NESSTAR epository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
-[harvester configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java), 
+[NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
+[harvester configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yml), 
 [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java), 
 [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java), 
-[harvester tests](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java?mode=edit&spa=0&at=develop&fileviewer=file-view-default). 
+[harvester tests](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java). 
 
 To add language, create a new file (for each branch) in: 
 [Harvester mappings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/), 
