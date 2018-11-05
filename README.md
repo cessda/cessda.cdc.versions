@@ -52,17 +52,32 @@ Adjust the read timeout, as required, via the [application.yml](https://bitbucke
 Update the cessda.pasc.osmh-indexer.cmm README files for each branch after making changes.
 
 To add endpoint/update URL of existing endpoint, edit the following files (for each branch):
-[oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
-[NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
+
 [harvester configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yml), 
-[oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java), 
-[NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java), 
+
 [harvester tests](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java). 
+
+Depending on the repository type, you also need to edit EITHER:
+
+[oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
+
+[oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java), 
+
+OR:
+
+[NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
+
+[NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java), 
+
+
 
 To add language, create a new file (for each branch) in: 
 [Harvester mappings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/), 
+
 [Harvester settings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/settings/), 
+
 [Searchkit locales directory](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/master/src/locales/) and edit [Searchkit language.js](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/dev/src/utilities/language.js) and [LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/service/helpers/LanguageDocumentExtractorTest.java).
+
 
 If you cannot see a component in the [Springboot Admin GUI for dev](https://datacatalogue-dev.cessda.eu/admin/#/) or [Springboot Admin GUI for staging](https://datacatalogue-staging.cessda.eu/admin/#/) or [Springboot Admin GUI for production](https://datacatalogue.cessda.eu/admin/#/),  
 then reploy the missing component (cessda.pasc.osmh-indexer.cmm, cessda.pasc.osmh-repository-handler.nesstar or cessda.pasc.osmh-repository-handler.oai-pmh) for that branch via Jenkins, 
