@@ -45,6 +45,11 @@ They are tricket automatically when code changes are commited to any of the Bitb
 
 ### Common tasks
 
+Reharvesting outside of scheduled harvesting periods - just run the Jenkins job [cessda.pasc.osmh-indexer.cmm](https://cit.cessda.eu/job/cessda.pasc.osmh-indexer.cmm/) 
+for the branch or branches you want to updated.
+
+Check language indexes have been created - look at the [storage bucket](https://console.cloud.google.com/storage/browser/cessda-pasc-es-dev/indices/?project=cessda-development) for a given branch.
+
 Make sure the harvesters (dev, staging, live) are not run in parallel against the endpoints, as some of them will time out under the load, and not deliver all the available metadata. 
 Set the harvesting times via the [application.yml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/master/src/main/resources/application.yml) file for each branch.
 
@@ -61,13 +66,13 @@ Depending on the repository type, you also need to edit EITHER:
 
 [oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
 
-[oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java), 
+and [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java). 
 
 OR:
 
 [NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
 
-[NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java), 
+and [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java). 
 
 
 
