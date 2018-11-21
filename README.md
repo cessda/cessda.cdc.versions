@@ -32,7 +32,7 @@ cessda.pasc.elasticsearch (backend to user interface, provides search and browse
 
 The following source code repos are used to build the components:
 
-cessda.pasc.reverse (reverse proxy used as part of the Certbot automated security sertificate renewal proces. Also provides authentication for components, as needed).
+cessda.pasc.reverse (reverse proxy used as part of the Certbot automated security certificate renewal proces. Also provides authentication for components, as needed).
 
 cessda.pasc.admin 9Spring Boot amin console. The logs are useful to check progress of harvesting).
 
@@ -40,7 +40,7 @@ cessda.pasc.admin 9Spring Boot amin console. The logs are useful to check progre
 ## Getting Started
 
 The various Jenkins jobs in the [DataCat](https://cit.cessda.eu/view/DataCat/) view are used to build, test and deploy the components. 
-They are tricket automatically when code changes are commited to any of the Bitbucket repos listed above.
+They are triggered automatically when code changes are commited to any of the Bitbucket repos listed above.
 
 
 ### Common tasks
