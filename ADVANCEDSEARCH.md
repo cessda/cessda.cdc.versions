@@ -25,29 +25,29 @@ All examples were run against the production instance of the [CESSDA Data Catalo
  
 ### Simple search
 
-house [741 results]
+`house` [741 results]
 
-garden [196 results]
+`garden` [196 results]
 
  
 
 ### AND search
 
-house + garden [47 results]
+`house + garden` [47 results]
 
  
 
 ### OR search
 
-house | garden [890 results]
+`house | garden` [890 results]
 
  
 
 ### NEGATION search
 
--house [13031 results]
+`-house` [13031 results]
 
--garden [13576 results]
+`-garden` [13576 results]
 
  
 
