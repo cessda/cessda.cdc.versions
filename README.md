@@ -75,18 +75,25 @@ OR:
 and [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java). 
 
 
-
 To add language, create a new file (for each branch) in: 
 [Harvester mappings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/), 
 
 [Harvester settings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/settings/), 
 
-[Searchkit locales directory](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/master/src/locales/) and edit [Searchkit language.js](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/dev/src/utilities/language.js) and [LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/service/helpers/LanguageDocumentExtractorTest.java).
+[Searchkit locales directory](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/master/src/locales/) 
+
+and edit following files so lists of languages match:
+
+[application.yaml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yaml).
+
+[LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/service/helpers/LanguageDocumentExtractorTest.java).
+
+[Searchkit language.js](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/dev/src/utilities/language.js) 
 
 
 If you cannot see a component in the [Springboot Admin GUI for dev](https://datacatalogue-dev.cessda.eu/admin/#/) or [Springboot Admin GUI for staging](https://datacatalogue-staging.cessda.eu/admin/#/) or [Springboot Admin GUI for production](https://datacatalogue.cessda.eu/admin/#/),  
 then reploy the missing component (cessda.pasc.osmh-indexer.cmm, cessda.pasc.osmh-repository-handler.nesstar or cessda.pasc.osmh-repository-handler.oai-pmh) for that branch via Jenkins, 
-so it can register with Springboot Admin.
+so it can register with Springboot Admin. Make sure that the Docker file has the "-Dspring.profiles.active" flag set to the correct profile name (dev, staging or live) otherwise the component will not register.
 
 ## Prerequisites
 
@@ -101,6 +108,7 @@ The Jenkinsfile defines the build, test and deployment pipeline for each branch 
 ## Running the tests
  
 The Jenkinsfile defines the test process for each branch of each component.
+
 The selenium directory contains the tests for each branch of each component.
 
 
