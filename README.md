@@ -135,7 +135,11 @@ You can find the list of contributors in the CONTRIBUTORS.md file for each compo
 
 ## License
 
-See the LICENSE file in each component repository.
+See the [LICENSE](LICENSE) file.
+
+## FAQs
+
+See the [FAQ](FAQ.md) file.
 
 ## Acknowledgments
 
