@@ -34,7 +34,11 @@ The following source code repos are used to build the components:
 
 cessda.pasc.reverse (reverse proxy used as part of the Certbot automated security certificate renewal proces. Also provides authentication for components, as needed).
 
-cessda.pasc.admin 9Spring Boot amin console. The logs are useful to check progress of harvesting).
+cessda.pasc.admin Spring Boot admin console (the logs are useful to check progress of harvesting).
+
+### Advance Search
+
+See [Advance Search](ADVANCEDSEARCH.md) for details.
 
 
 ## Getting Started
@@ -43,7 +47,7 @@ The various Jenkins jobs in the [DataCat](https://cit.cessda.eu/view/DataCat/) v
 They are triggered automatically when code changes are commited to any of the Bitbucket repos listed above.
 
 
-### Common tasks
+## Common tasks
 
 Reharvesting outside of scheduled harvesting periods - just run the Jenkins job [cessda.pasc.osmh-indexer.cmm](https://cit.cessda.eu/job/cessda.pasc.osmh-indexer.cmm/) 
 for the branch or branches you want to updated.
@@ -56,48 +60,51 @@ Set the harvesting times via the [application.yml](https://bitbucket.org/cessda/
 Adjust the read timeout, as required, via the [application.yml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/master/src/main/resources/application.yml) file for each branch. 
 Update the cessda.pasc.osmh-indexer.cmm README files for each branch after making changes.
 
-To add endpoint/update URL of existing endpoint, edit the following files (for each branch):
+### To add endpoint/update URL of existing endpoint, edit the following files (for each branch):
 
-[harvester configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yml), 
+cessda.pasc.osmh-indexer.cmm [harvester configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yml), 
 
-[harvester tests](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java). 
+cessda.pasc.osmh-indexer.cmm [harvester tests](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/repository/PascHarvesterDaoTest.java). 
 
 Depending on the repository type, you also need to edit EITHER:
 
-[oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
+cessda.pasc.osmh-repository-handler.oai-pmh [oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
 
-and [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java). 
+and cessda.pasc.osmh-repository-handler.oai-pmh [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/pasc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java). 
 
 OR:
 
-[NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
+cessda.pasc.osmh-repository-handler.nesstar [NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
 
-and [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java). 
+and cessda.pasc.osmh-repository-handler.nesstar [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.pasc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/pasc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java). 
 
 
-To add language, create a new file (for each branch) in: 
-[Harvester mappings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/), 
+### To add language, create a new file (for each branch) in: 
 
-[Harvester settings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/settings/), 
+cessda.pasc.osmh-indexer.cmm [Harvester mappings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/), 
 
-[Searchkit locales directory](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/master/src/locales/) 
+cessda.pasc.osmh-indexer.cmm [Harvester settings directory](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/settings/), 
+
+cessda.pasc.searchkit [Searchkit locales directory](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/master/src/locales/) 
 
 and edit following files so lists of languages match:
 
-[application.yaml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yaml).
+pasc.osmh-indexer.cmm [application.yaml](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/main/resources/application.yaml).
 
-[LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/service/helpers/LanguageDocumentExtractorTest.java).
+pasc.osmh-indexer.cmm [LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.pasc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/pasc/oci/service/helpers/LanguageDocumentExtractorTest.java).
 
-[Searchkit language.js](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/dev/src/utilities/language.js) 
+cessda.pasc.searchkit [Searchkit language.js](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/dev/src/utilities/language.js) 
 
 
 If you cannot see a component in the [Springboot Admin GUI for dev](https://datacatalogue-dev.cessda.eu/admin/#/) or [Springboot Admin GUI for staging](https://datacatalogue-staging.cessda.eu/admin/#/) or [Springboot Admin GUI for production](https://datacatalogue.cessda.eu/admin/#/),  
-then reploy the missing component (cessda.pasc.osmh-indexer.cmm, cessda.pasc.osmh-repository-handler.nesstar or cessda.pasc.osmh-repository-handler.oai-pmh) for that branch via Jenkins, 
-so it can register with Springboot Admin. Make sure that the Docker file has the "-Dspring.profiles.active" flag set to the correct profile name (dev, staging or live) otherwise the component will not register.
+then reploy the missing component (`cessda.pasc.osmh-indexer.cmm, cessda.pasc.osmh-repository-handler.nesstar` or` cessda.pasc.osmh-repository-handler.oai-pmh`) for that branch via Jenkins, 
+so it can register with Springboot Admin. Make sure that the Docker file has the `"-Dspring.profiles.active"` flag set to the correct profile name (dev, staging or live) otherwise the component will not register.
 
 ## Prerequisites
 
-You need to set the values of various environment variables TODO list them.
+You need to set the values of various environment variables 
+
+[TODO] list them.
 
 
 ## Installing
@@ -131,7 +138,7 @@ See [Semantic Versioning](https://semver.org/) for guidance.
 
 ## Contributors
 
-You can find the list of contributors in the CONTRIBUTORS.md file for each component repository.
+You can find the list of contributors in the [CONTRIBUTORS](CONTRIBUTORS.md) file for each component repository.
 
 ## License
 
@@ -144,4 +151,3 @@ See the [FAQ](FAQ.md) file.
 ## Acknowledgments
 
 None at present.
-
