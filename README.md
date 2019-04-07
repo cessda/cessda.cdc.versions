@@ -36,9 +36,9 @@ cessda.pasc.reverse (reverse proxy used as part of the Certbot automated securit
 
 cessda.pasc.admin Spring Boot admin console (the logs are useful to check progress of harvesting).
 
-### Advance Search
+### Advanced Search
 
-See [Advance Search](ADVANCEDSEARCH.md) for details.
+See [Advanced Search](ADVANCEDSEARCH.md) for details.
 
 
 ## Getting Started
@@ -138,7 +138,7 @@ See [Semantic Versioning](https://semver.org/) for guidance.
 
 ## Contributors
 
-You can find the list of contributors in the [CONTRIBUTORS](CONTRIBUTORS.md) file for each component repository.
+You can find the list of contributors in the `CONTRIBUTORS.md` file for each component repository.
 
 ## License
 
