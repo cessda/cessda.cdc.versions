@@ -95,10 +95,13 @@ pasc.osmh-indexer.cmm [LanguageDocumentExtractorTest.java](https://bitbucket.org
 
 cessda.pasc.searchkit [Searchkit language.js](https://bitbucket.org/cessda/cessda.pasc.searchkit/src/dev/src/utilities/language.js) 
 
+## Springboot Admin
 
 If you cannot see a component in the [Springboot Admin GUI for dev](https://datacatalogue-dev.cessda.eu/admin/#/) or [Springboot Admin GUI for staging](https://datacatalogue-staging.cessda.eu/admin/#/) or [Springboot Admin GUI for production](https://datacatalogue.cessda.eu/admin/#/),  
 then reploy the missing component (`cessda.pasc.osmh-indexer.cmm, cessda.pasc.osmh-repository-handler.nesstar` or` cessda.pasc.osmh-repository-handler.oai-pmh`) for that branch via Jenkins, 
-so it can register with Springboot Admin. Make sure that the Docker file has the `"-Dspring.profiles.active"` flag set to the correct profile name (dev, staging or live) otherwise the component will not register.
+so it can register with Springboot Admin. 
+
+Make sure that the Docker file has the `"-Dspring.profiles.active"` flag set to the correct profile name (dev, staging or live) otherwise the component will not register.
 
 ## Prerequisites
 
