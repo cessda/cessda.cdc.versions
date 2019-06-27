@@ -1,4 +1,4 @@
-# cessda.cdc.version2 cdc
+# cessda.cdc.version2
 
 The CESSDA Data Catalogue (CDC) harvests metadata from various endpoints. 
 It uses different repository handlers to adapt the payload for each type of endpoint to a standard format (the Cessda Metadata Model, CMM). 
@@ -21,17 +21,21 @@ The following source code repos are used to build the harvester components:
 The following source code repos are used to build the user facing components:
 
 - [cessda.cdc.searchkit](https://bitbucket.org/cessda/cessda.cdc.searchkit) (user interface).
-- [cessda.cdc.elasticsearch](https://bitbucket.org/cessda/cessda.cdc.elasticsearch) (backend to user interface, provides search and browse functionality).
 
 
 ### Management components
 
 The following source code repos are used to build the management components:
 
-- [cessda.cdc.reverse](https://bitbucket.org/cessda/cessda.cdc.reverse) (reverse proxy used as part of the Certbot automated security certificate renewal proces. Also provides authentication for components, as needed).
-- [cessda.cdc.admin](https://bitbucket.org/cessda/cessda.cdc.admin) Spring Boot admin console (the logs are useful to check progress of harvesting).
+- [cessda.cdc.admin](https://bitbucket.org/cessda/cessda.cdc.admin) (Spring Boot admin console, the logs are useful to check progress of harvesting).
+- [elasticsearch](https://bitbucket.org/cessda/cessda.cdc.deploy/src/master/elasticsearch/) (backend to user interface, provides search and browse functionality).
+- [kibana](https://bitbucket.org/cessda/cessda.cdc.deploy/src/master/kibana/) (used to analyse the raw content of the harvested data).
+- [mailrelay](https://bitbucket.org/cessda/cessda.cdc.deploy/src/master/mailrelay/) (used for sending messages relating to the health and status of the product to the DevOps team).
+- [cessda.mgmt.reverse](https://bitbucket.org/cessda/cessda.mgmt.reverse) (reverse proxy used as part of the Certbot automated security certificate renewal proces. Also provides authentication for components, as needed).
+
 
 ### QA and Deployment
+
 
 The following source code repos are used to test and deploy the product's components:
 
