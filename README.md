@@ -1,100 +1,100 @@
 # cessda.cdc.version2
 
-The CESSDA Data Catalogue (CDC) harvests metadata from various endpoints. 
-It uses different repository handlers to adapt the payload for each type of endpoint to a standard format (the Cessda Metadata Model, CMM). 
+The CESSDA Data Catalogue (CDC) harvests metadata from various endpoints.
+It uses different repository handlers to adapt the payload for each type of endpoint to a standard format (the [CESSDA Metadata Model](https://doi.org/10.5281/zenodo.3236171), CMM).
 
 ## Project Structure
 
-The producy is made up of several components, which can be grouped as Data Gathering, User Facing, Management and QA & Deployment.
+The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing, Management and QA & Deployment.
 
 ### Data Gathering components
 
-The following source code repos are used to build the harvester components:
+The following *Open Source* code repositories are used to build the harvester components:
 
-- [cessda.cdc.osmh-indexer.cmm](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm) (harvester that periodically calls the repository handlers which build the Elasticsearch indicies). 
+- [cessda.cdc.osmh-indexer.cmm](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm) (harvester that periodically calls the repository handlers which build the Elasticsearch indicies).
 - [cessda.cdc.osmh-repository-handler.nesstar](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar) (repository handler for OAI-PMH enabled NESSTAR endpoints serving DDI 1.2).
 - [cessda.cdc.osmh-repository-handler.oai-pmh](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh) (repository handler for OAI-PMH endpoints serving DDI 2.5).
 
-
 ### User Facing components
 
-The following source code repos are used to build the user facing components:
+The following *Open Source* code repository is used to build the user facing components:
 
 - [cessda.cdc.searchkit](https://bitbucket.org/cessda/cessda.cdc.searchkit) (user interface).
 
 
 ### Management components
 
-The following source code repos are used to build the management components:
+The following private source code repositories are used to build the management components:
 
-- [cessda.cdc.admin](https://bitbucket.org/cessda/cessda.cdc.admin) (Spring Boot admin console, the logs are useful to check progress of harvesting).
-- [elasticsearch](https://bitbucket.org/cessda/cessda.cdc.deploy/src/master/elasticsearch/) (backend to user interface, provides search and browse functionality).
-- [kibana](https://bitbucket.org/cessda/cessda.cdc.deploy/src/master/kibana/) (used to analyse the raw content of the harvested data).
-- [mailrelay](https://bitbucket.org/cessda/cessda.cdc.deploy/src/master/mailrelay/) (used for sending messages relating to the health and status of the product to the DevOps team).
-- [cessda.mgmt.reverse](https://bitbucket.org/cessda/cessda.mgmt.reverse) (reverse proxy used as part of the Certbot automated security certificate renewal proces. Also provides authentication for components, as needed).
+- cessda.cdc.admin (Spring Boot admin console, the logs are useful to check progress of harvesting).
+- cessda.cdc.deploy/elasticsearch (backend to user interface, provides search and browse functionality).
+- cessda.cdc.deploy/mailrelay (used for sending messages relating to the health and status of the product to the DevOps team).
+- cessda.cdc.reverse (reverse proxy used as part of the Certbot automated security certificate renewal process. Also provides authentication for components, as needed).
+- cessda.cdc.sitemapgenerator (generates a sitemap for use by [Google Data Search](https://toolbox.google.com/datasetsearch) crawler).
 
+### Documentation and issue tracking components
+
+The following private source code repositories are used to build the documentation components:
+- cessda.cdc.userguide (source files in reStructuredText markup language that are converted via Sphinx to ReadTheDocs format).
+- cessda.cdc.version2 (contains an issue tracker used internally to record the backlog).
 
 ### QA and Deployment
 
+The following private source code repositories are used to test and deploy the product's components:
 
-The following source code repos are used to test and deploy the product's components:
-
-- [cessda.cdc.deploy](https://bitbucket.org/cessda/cessda.cdc.deploy) (contains all the scripts and infrastructure definitions needed to deploy the product).
-- [cessda.cdc.test](https://bitbucket.org/cessda/cessda.cdc.test) (contains test scripts used to QA the product during the deployment process).
-- [cessda.cdc.profile](https://bitbucket.org/cessda/cessda.cdc.profile) (contains and XSD file that can be used to check that the XML provided by an endpoint is compliant with the CMM profile).
-
-
+- cessda.cdc.deploy (contains all the scripts and infrastructure definitions needed to deploy the product).
+- cessda.cdc.test (contains test scripts used to QA the product during the deployment process).
+- cessda.cmm.profile (contains and XSD file that can be used to check that the XML provided by an endpoint is compliant with the CMM profile).
 
 ## Advanced Search
 
 See [Advanced Search](ADVANCEDSEARCH.md) for details.
 
-
 ## Getting Started
 
-The various Jenkins jobs in the [DataCat](https://cit.cessda.eu/view/DataCat/) view are used to build, test and deploy the components. 
-They are triggered automatically when code changes are commited to any of the Bitbucket repos listed above.
-
+The various Jenkins jobs in the [DataCat](https://cit.cessda.eu/view/DataCat/) view are used to build, test and deploy the components.
+They are triggered automatically when code changes are committed to any of the Bitbucket repos listed above.
 
 ## Common tasks
 
-Reharvesting outside of scheduled harvesting periods - just run the Jenkins job [cessda.cdc.osmh-indexer.cmm](https://cit.cessda.eu/job/cessda.cdc.osmh-indexer.cmm/) 
-for the branch or branches you want to updated.
+Reharvesting outside of scheduled harvesting periods
+- run the Jenkins job [cessda.cdc.osmh-indexer.cmm](https://cit.cessda.eu/job/cessda.cdc.osmh-indexer.cmm/) for the instance (development, staging, production) you want to updated.
 
-Check language indexes have been created - look at the [storage bucket](https://console.cloud.google.com/storage/browser/cessda-pasc-es-live/indices/?project=cessda-development) for a given branch.
+Check language indexes have been created
+- look at the [storage bucket](https://console.cloud.google.com/storage/browser/cessda-pasc-es-live/indices/?project=cessda-development).
 
-Make sure the harvesters (dev, staging, live) are not run in parallel against the endpoints, as some of them will time out under the load, and not deliver all the available metadata. 
-Set the harvesting times via the [application.yml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml) file for each branch.
+Make sure the harvesters (dev, staging, production) are not run in parallel against the endpoints, as some of them will time out under the load, and not deliver all the available metadata.
+- set the harvesting times via the [application.yml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml).
 
-Adjust the read timeout, as required, via the [application.yml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml) file for each branch. 
-Update the cessda.cdc.osmh-indexer.cmm README files for each branch after making changes.
+Adjust the read timeout, as required, via the [application.yml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml).
+- update the cessda.cdc.osmh-indexer.cmm README file after making changes.
 
-### To add endpoint/update URL of existing endpoint, edit the following files (for each branch):
+### To add endpoint/update URL of existing endpoint, edit the following files:
 
-cessda.cdc.osmh-indexer.cmm [harvester configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/main/resources/application.yml), 
+cessda.cdc.osmh-indexer.cmm [harvester configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/main/resources/application.yml),
 
-cessda.cdc.osmh-indexer.cmm [harvester tests](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/cdc/oci/repository/cdcHarvesterDaoTest.java). 
+cessda.cdc.osmh-indexer.cmm [harvester tests](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/cdc/oci/repository/cdcHarvesterDaoTest.java).
 
 Depending on the repository type, you also need to edit EITHER:
 
-cessda.cdc.osmh-repository-handler.oai-pmh [oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml), 
+cessda.cdc.osmh-repository-handler.oai-pmh [oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml),
 
-and cessda.cdc.osmh-repository-handler.oai-pmh [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/cdc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java). 
+and cessda.cdc.osmh-repository-handler.oai-pmh [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/cdc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java).
 
 OR:
 
-cessda.cdc.osmh-repository-handler.nesstar [NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml), 
+cessda.cdc.osmh-repository-handler.nesstar [NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml),
 
-and cessda.cdc.osmh-repository-handler.nesstar [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/cdc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java). 
+and cessda.cdc.osmh-repository-handler.nesstar [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/cdc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java).
 
 
-### To add language, create a new file (for each branch) in: 
+### To add language, create a new file in:
 
-cessda.cdc.osmh-indexer.cmm [Harvester mappings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/), 
+cessda.cdc.osmh-indexer.cmm [Harvester mappings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/mappings/),
 
-cessda.cdc.osmh-indexer.cmm [Harvester settings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/settings/), 
+cessda.cdc.osmh-indexer.cmm [Harvester settings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/main/resources/elasticsearch/settings/),
 
-cessda.cdc.searchkit [Searchkit locales directory](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/src/locales/) 
+cessda.cdc.searchkit [Searchkit locales directory](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/src/locales/)
 
 and edit following files so lists of languages match:
 
@@ -102,19 +102,19 @@ cdc.osmh-indexer.cmm [application.yaml](https://bitbucket.org/cessda/cessda.cdc.
 
 cdc.osmh-indexer.cmm [LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/develop/src/test/java/eu/cessda/cdc/oci/service/helpers/LanguageDocumentExtractorTest.java).
 
-cessda.cdc.searchkit [Searchkit language.js](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/dev/src/utilities/language.js) 
+cessda.cdc.searchkit [Searchkit language.js](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/dev/src/utilities/language.js)
 
 ## Springboot Admin
 
 If you cannot see a component in the [Springboot Admin GUI for dev](https://datacatalogue-dev.cessda.eu/admin/#/) or [Springboot Admin GUI for staging](https://datacatalogue-staging.cessda.eu/admin/#/) or [Springboot Admin GUI for production](https://datacatalogue.cessda.eu/admin/#/),  
-then redeploy the missing component (`cessda.cdc.osmh-indexer.cmm, cessda.cdc.osmh-repository-handler.nesstar` or `cessda.cdc.osmh-repository-handler.oai-pmh`) via Jenkins, 
-so it can register with Springboot Admin. 
+then redeploy the missing component (`cessda.cdc.osmh-indexer.cmm, cessda.cdc.osmh-repository-handler.nesstar` or `cessda.cdc.osmh-repository-handler.oai-pmh`) via Jenkins,
+so it can register with Springboot Admin.
 
 Make sure that the Docker file has the `"-Dspring.profiles.active"` flag set to the correct profile name (dev, staging or live) otherwise the component will not register.
 
 ## Prerequisites
 
-You need to set the values of various environment variables 
+You need to set the values of various environment variables
 
 [TODO] list them.
 
@@ -125,7 +125,7 @@ The Jenkinsfile defines the build, test and deployment pipeline. See also **'QA 
 
 
 ## Running the tests
- 
+
 See **'QA and Deployment'** section, above.
 
 
