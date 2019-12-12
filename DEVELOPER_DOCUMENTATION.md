@@ -1,4 +1,4 @@
-# cessda.cdc.version2 Developer Documentation
+# Developer Documentation - CESSDA Data Catalogue v2.2.0
 
 [BACK](README.md)
 

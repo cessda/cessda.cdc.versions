@@ -1,11 +1,11 @@
-# cessda.cdc.version2
+# CESSDA Data Catalogue v2.2.0
 
 The CESSDA Data Catalogue (CDC) harvests metadata from various endpoints.
 It uses different repository handlers to adapt the payload for each type of endpoint to a standard format (the [CESSDA Metadata Model](https://doi.org/10.5281/zenodo.3236171), CMM).
 
 ## Project Structure
 
-The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing and Management. There are also some repositories which are concerned with Documentation & Issue Tracking and QA & Deployment respectively..
+The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing and Management. There are also some repositories which are concerned with Documentation & Issue Tracking and QA & Deployment respectively.
 
 ### Data Gathering components
 
@@ -48,19 +48,19 @@ The following private source code repositories are used to test and deploy the p
 
 ## Developer documentation
 
-See [Developer documentation](DEVELOPER_DOCUMENTATION.md) for details.
+See [CDC Developer documentation](DEVELOPER_DOCUMENTATION.md) for details.
 
 ## Operations documentation
 
-See [Operations documentation](OPERATIONS_DOCUMENTATION.md) for details.
+See [CDC Operations documentation](OPERATIONS_DOCUMENTATION.md) for details.
 
 ## User documentation
 
-See [User guide](https://datacatalogue.cessda.eu/documentation/) for details.
+See [CDC User guide](https://datacatalogue.cessda.eu/documentation/) for details.
 
 ## Installing
 
-The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component.
+The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component. See also the **'README.md'** file in each of those repositories.
 
 ## Running the tests
 
@@ -72,7 +72,7 @@ See the **'QA and Deployment'** section, above.
 
 ## Built With
 
-The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component.
+The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component. See also the **'README.md'** file in each of those repositories.
 
 ## Contributing
 
