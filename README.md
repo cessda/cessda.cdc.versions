@@ -46,38 +46,33 @@ The following private source code repositories are used to test and deploy the p
 - cessda.cdc.test (contains test scripts used to QA the product during the deployment process).
 - cessda.cmm.profile (contains and XSD file that can be used to check that the XML provided by an endpoint is compliant with the CMM profile).
 
-## Advanced Search
+## Developer documentation
 
-See [Advanced Search](ADVANCEDSEARCH.md) for details.
+See [Developer documentation](DEVELOPER_DOCUMENTATION.md) for details.
 
+## Operations documentation
 
-## Prerequisites
+See [Operations documentation](OPERATIONS_DOCUMENTATION.md) for details.
 
-You need to set the values of various environment variables
+## User documentation
 
-[TODO] list them.
-
+See [User guide](https://datacatalogue.cessda.eu/documentation/) for details.
 
 ## Installing
 
-The Jenkinsfile defines the build, test and deployment pipeline. See also **'QA and Deployment'** section, above.
-
+The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component.
 
 ## Running the tests
 
-See **'QA and Deployment'** section, above.
-
+See the **'QA and Deployment'** section, above.
 
 ## Deployment
 
-The Jenkinsfile defines the deployment process. See also **'QA and Deployment'** section, above.
-
-
+See the **'QA and Deployment'** section, above.
 
 ## Built With
 
-The Jenkinsfile defines the build process. See also **'QA and Deployment'** section, above.
-
+The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component.
 
 ## Contributing
 
@@ -93,7 +88,7 @@ You can find the list of contributors in the `CONTRIBUTORS.md` file for each com
 
 ## License
 
-See the [LICENSE](LICENSE) file.
+See the [LICENSE](LICENSE) file for each component repository.
 
 ## FAQs
 
