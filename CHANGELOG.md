@@ -4,19 +4,19 @@ All notable changes to the CESSDA Data Catalogue will be documented in this file
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-For each release, use the following sub-sections:
-- Added (for new features).
-- Changed (for changes in existing functionality).
-- Deprecated (for soon-to-be removed features).
-- Removed (for now removed features).
-- Fixed (for any bug fixes).
-- Security (in case of vulnerabilities).
+*For each release, use the following sub-sections:*  
+*- Added (for new features)*  
+*- Changed (for changes in existing functionality)*  
+*- Deprecated (for soon-to-be removed features)*  
+*- Removed (for now removed features)*  
+*- Fixed (for any bug fixes)*  
+*- Security (in case of vulnerabilities)*
 
 ## [Unreleased]
 - TBC
 
 
-## [2.2.122] - 2020-04-30
+## [2.2.34] - 2020-04-30
 ### Added
 - French language index
 - new GESIS endpoint ([#162](https://bitbucket.org/cessda/cessda.cdc.version2/issues/162))
