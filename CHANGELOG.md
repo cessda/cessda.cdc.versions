@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - TBC
 
 
-## [2.2.34] - 2020-04-30
+## [2.2.35] - 2020-05-04
 ### Added
 - French language index
 - new GESIS endpoint ([#162](https://bitbucket.org/cessda/cessda.cdc.version2/issues/162))
