@@ -16,7 +16,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - TBC
 
 
-## [2.2.35] - 2020-05-04
+## [2.2.35] - 2020-05-04    
+
+Searchkit - [10.5281/zenodo.3786300](https://zenodo.org/deposit/3786300)
+
+OSMH Consumer Indexer - [10.5281/zenodo.3786356](https://zenodo.org/deposit/3786356)
+
+OSMH Handler Nesstar - [10.5281/zenodo.3786438](https://zenodo.org/deposit/3786438)
+
+OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/deposit/3786446)
+
+
 ### Added
 - French language index
 - new GESIS endpoint ([#162](https://bitbucket.org/cessda/cessda.cdc.version2/issues/162))
