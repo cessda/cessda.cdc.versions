@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - TBC
 
 
-## [2.2.35] - 2020-05-04    
+## [2.2.1] - 2020-05-04    
 
 Searchkit - [10.5281/zenodo.3786300](https://zenodo.org/deposit/3786300)
 
