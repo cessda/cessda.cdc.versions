@@ -14,9 +14,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Fixed
+### Added
+- (cessda.cdc.osmh-indexer.cmm) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
+- (cessda.cdc.osmh-repository-handler.oai-pmh) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
+- (cessda.cdc.osmh-repository-handler.nesstar) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 
-- disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
+### Fixed
+- (cessda.cdc.osmh-repository-handler.oai-pmh) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
+- (cessda.cdc.osmh-repository-handler.nesstar) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
+
 
 ## [2.2.1] - 2020-05-04    
 
