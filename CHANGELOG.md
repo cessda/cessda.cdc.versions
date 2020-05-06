@@ -13,8 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 *- Security (in case of vulnerabilities)*
 
 ## [Unreleased]
-- TBC
 
+### Fixed
+
+- disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
 
 ## [2.2.1] - 2020-05-04    
 
