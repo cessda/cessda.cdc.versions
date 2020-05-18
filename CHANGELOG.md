@@ -15,9 +15,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+- (cessda.cdc.osmh-indexer.cmm) Harvest separate repositories in parallel([#178](https://bitbucket.org/cessda/cessda.cdc.version2/issues/178))
 - (cessda.cdc.osmh-indexer.cmm) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-repository-handler.nesstar) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
+
+### Changed
+- (cessda.cdc.osmh-indexer.cmm) Log statistics for created, deleted and updated studies. This is an enhancement of 8ef04dce87. ([#181](https://bitbucket.org/cessda/cessda.cdc.version2/issues/181))
 
 ### Fixed
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
