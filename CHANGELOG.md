@@ -19,13 +19,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - (cessda.cdc.osmh-indexer.cmm) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-repository-handler.nesstar) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
+- (cessda.cdc.deploy) Deployed Kibana ([#196](https://bitbucket.org/cessda/cessda.cdc.version2/issues/196/deploy-kibana))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.nesstar) Added option to set a default language as part of the endpoint specification ([#192](https://bitbucket.org/cessda/cessda.cdc.version2/issues/192/add-option-to-set-default-language-as-part))
 
 ### Changed
 - (cessda.cdc.osmh-indexer.cmm) Log statistics for created, deleted and updated studies. This is an enhancement of 8ef04dce87. ([#181](https://bitbucket.org/cessda/cessda.cdc.version2/issues/181))
+- (cessda.cdc.osmh-indexer.cmm) Add more details to 'Configured Repos' log output ([#195](https://bitbucket.org/cessda/cessda.cdc.version2/issues/195/add-more-details-to-configured-repos-log))
+- (cessda.cdc.osmh-indexer.cmm) Updated Elasticsearch to 5.6 ([#188](https://bitbucket.org/cessda/cessda.cdc.version2/issues/188/update-elasticsearch-to-56))
+- (cessda.cdc.admin) Updated Spring Boot Admin to 2.2.3 ([#191](https://bitbucket.org/cessda/cessda.cdc.version2/issues/191/update-spring-boot-admin-to-223))
 
 ### Fixed
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
 - (cessda.cdc.osmh-repository-handler.nesstar) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
+- (cessda.cdc.osmh-indexer.cmm) Ensure daily harvest does not take place during GCP maintenance window ([#193](https://bitbucket.org/cessda/cessda.cdc.version2/issues/193/ensure-daily-harvest-does-not-take-place))
+- (cessda.cdc.deploy) Use the correct liveness and readiness endpoints in Spring Boot 2.3 ([#194](Use the correct liveness and readiness endpoints in Spring Boot 2.3))
 
 
 ## [2.2.1] - 2020-05-04    
