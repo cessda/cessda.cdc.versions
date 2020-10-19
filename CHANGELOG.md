@@ -1,34 +1,40 @@
 # Changelog
+
 All notable changes to the CESSDA Data Catalogue will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-*For each release, use the following sub-sections:*  
-*- Added (for new features)*  
-*- Changed (for changes in existing functionality)*  
-*- Deprecated (for soon-to-be removed features)*  
-*- Removed (for now removed features)*  
-*- Fixed (for any bug fixes)*  
-*- Security (in case of vulnerabilities)*
+*For each release, use the following sub-sections:*
+
+- *Added (for new features)*  
+- *Changed (for changes in existing functionality)*  
+- *Deprecated (for soon-to-be removed features)*  
+- *Removed (for now removed features)*  
+- *Fixed (for any bug fixes)*  
+- *Security (in case of vulnerabilities)*
 
 ## [Unreleased]
 
 ### Added
-- (cessda.cdc.osmh-indexer.cmm) Harvest separate repositories in parallel([#178](https://bitbucket.org/cessda/cessda.cdc.version2/issues/178))
+
+- (cessda.cdc.osmh-indexer.cmm) Harvest separate repositories in parallel ([#178](https://bitbucket.org/cessda/cessda.cdc.version2/issues/178))
 - (cessda.cdc.osmh-indexer.cmm) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-repository-handler.nesstar) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.oai-pmh/cessda.cdc.osmh-repository-handler.nesstar) Add HTTP compression to the repository handlers ([#167](https://bitbucket.org/cessda/cessda.cdc.version2/issues/167/add-http-compression-to-the-repository))
 
 ### Changed
+
 - (cessda.cdc.osmh-indexer.cmm) Log statistics for created, deleted and updated studies. This is an enhancement of 8ef04dce87. ([#181](https://bitbucket.org/cessda/cessda.cdc.version2/issues/181))
+- (cessda.cdc.osmh-repository-handler.nesstar) Updated NESSTAR repository handler to Spring Boot 2.3.1 ([#189](https://bitbucket.org/cessda/cessda.cdc.version2/issues/189/update-nesstar-repository-handler-to))
 
 ### Fixed
+
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
 - (cessda.cdc.osmh-repository-handler.nesstar) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
+- (cessda.cdc.osmh-indexer.cmm) Fix rejection reason not showing in the logs ([#184](https://bitbucket.org/cessda/cessda.cdc.version2/issues/184/fix-rejection-reason-not-showing-in-the))
 
-
-## [2.2.1] - 2020-05-04    
+## [2.2.1] - 2020-05-04
 
 Searchkit - [10.5281/zenodo.3786300](https://zenodo.org/record/3786300)
 
@@ -38,8 +44,8 @@ OSMH Handler Nesstar - [10.5281/zenodo.3786438](https://zenodo.org/record/378643
 
 OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/record/3786446)
 
-
 ### Added
+
 - French language index
 - new GESIS endpoint ([#162](https://bitbucket.org/cessda/cessda.cdc.version2/issues/162))
 - file appender
@@ -49,6 +55,7 @@ OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/record/378644
 - dependency for JSON logging support (logstash-logback-encoder 5.2)
 
 ### Changed
+
 - default results sorting order (from relevance to collection date descending) ([#163](https://bitbucket.org/cessda/cessda.cdc.version2/issues/163))
 - various UI label changes ([#153](https://bitbucket.org/cessda/cessda.cdc.version2/issues/153))), ([#154](https://bitbucket.org/cessda/cessda.cdc.version2/issues/154))
 - changed GESIS endpoint from HTTP to HTTPS ([#162](https://bitbucket.org/cessda/cessda.cdc.version2/issues/162))
@@ -75,15 +82,18 @@ OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/record/378644
 - improved logging to help determine quality of harvested metadata ([#191](https://bitbucket.org/cessda/cessda.cdc.version2/issues/91))
 
 ### Deprecated
+
 - N/A
 
 ### Removed
+
 - Norwegian language index
 - caches of RuntimeException in ESIngestService
 - option to disable HTTPS verification
 - unnecessary null check
 
 ### Fixed
+
 - compiler warnings, as recommended by Error Prone
 - time zone bugs
 - logging pattern for the file logger
@@ -97,5 +107,6 @@ OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/record/378644
 - time zone bugs
 
 ### Security
+
 - verify SSL
 - removed the option to disable HTTPS verification
