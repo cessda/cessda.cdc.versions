@@ -17,28 +17,48 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ### Added
 
+- (cessda.cdc.osmh-indexer.cmm) Boost specific keywords ([#131](https://bitbucket.org/cessda/cessda.cdc.version2/issues/131))
+- (cessda.cdc.osmh-indexer.cmm) Set the study url field from any language before replacing it with the language specific element ([#142](https://bitbucket.org/cessda/cessda.cdc.version2/issues/142))
+- (cessda.cdc.osmh-indexer.cmm) Modify Harvester to output required logs for structured logging ([#159](https://bitbucket.org/cessda/cessda.cdc.version2/issues/159))
+- (cessda.cdc.searchkit/cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.nesstar) Remove (not available) if no PID agency ([#156](https://bitbucket.org/cessda/cessda.cdc.version2/issues/156))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.oai-pmh/cessda.cdc.osmh-repository-handler.nesstar) Add HTTP compression to the repository handlers ([#167](https://bitbucket.org/cessda/cessda.cdc.version2/issues/167))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.oai-pmh/cessda.cdc.osmh-repository-handler.nesstar) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
 - (cessda.cdc.osmh-indexer.cmm) Harvest separate repositories in parallel ([#178](https://bitbucket.org/cessda/cessda.cdc.version2/issues/178))
-- (cessda.cdc.osmh-indexer.cmm) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
-- (cessda.cdc.osmh-repository-handler.oai-pmh) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
-- (cessda.cdc.osmh-repository-handler.nesstar) Add new PROGEDO endpoint ([#177](https://bitbucket.org/cessda/cessda.cdc.version2/issues/177))
-- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.oai-pmh/cessda.cdc.osmh-repository-handler.nesstar) Add HTTP compression to the repository handlers ([#167](https://bitbucket.org/cessda/cessda.cdc.version2/issues/167/add-http-compression-to-the-repository))
-- (cessda.cdc.deploy) Deployed Kibana ([#196](https://bitbucket.org/cessda/cessda.cdc.version2/issues/196/deploy-kibana))
-- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.nesstar) Added option to set a default language as part of the endpoint specification ([#192](https://bitbucket.org/cessda/cessda.cdc.version2/issues/192/add-option-to-set-default-language-as-part))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.nesstar) Added option to set a default language as part of the endpoint specification ([#192](https://bitbucket.org/cessda/cessda.cdc.version2/issues/192))
+- (cessda.cdc.deploy) Deployed Kibana ([#196](https://bitbucket.org/cessda/cessda.cdc.version2/issues/196))
+- (cessda.cdc.osmh-indexer.cmm) Add ADP Kuha2 Endpoint ([#201](https://bitbucket.org/cessda/cessda.cdc.version2/issues/201))
+- (cessda.cdc.osmh-indexer.cmm) Add stopwords for Hungarian and Portuguese language analysers ([#204](https://bitbucket.org/cessda/cessda.cdc.version2/issues/204))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.searchkit) Delete inactive records ([#217](https://bitbucket.org/cessda/cessda.cdc.version2/issues/217))
+- (cessda.cdc.searchkit) Boost titleStudy, abstract, creators and keywords.properties at query time ([#224](https://bitbucket.org/cessda/cessda.cdc.version2/issues/224))
 
 ### Changed
 
 - (cessda.cdc.osmh-indexer.cmm) Log statistics for created, deleted and updated studies. This is an enhancement of 8ef04dce87. ([#181](https://bitbucket.org/cessda/cessda.cdc.version2/issues/181))
-- (cessda.cdc.osmh-repository-handler.nesstar) Updated NESSTAR repository handler to Spring Boot 2.3.1 ([#189](https://bitbucket.org/cessda/cessda.cdc.version2/issues/189/update-nesstar-repository-handler-to))
-- (cessda.cdc.osmh-indexer.cmm) Add more details to 'Configured Repos' log output ([#195](https://bitbucket.org/cessda/cessda.cdc.version2/issues/195/add-more-details-to-configured-repos-log))
-- (cessda.cdc.osmh-indexer.cmm) Updated Elasticsearch to 5.6 ([#188](https://bitbucket.org/cessda/cessda.cdc.version2/issues/188/update-elasticsearch-to-56))
-- (cessda.cdc.admin) Updated Spring Boot Admin to 2.2.3 ([#191](https://bitbucket.org/cessda/cessda.cdc.version2/issues/191/update-spring-boot-admin-to-223))
+- (cessda.cdc.osmh-indexer.cmm) Updated Elasticsearch to 5.6 ([#188](https://bitbucket.org/cessda/cessda.cdc.version2/issues/188))
+- (cessda.cdc.osmh-repository-handler.nesstar) Updated NESSTAR repository handler to Spring Boot 2.3.1 ([#189](https://bitbucket.org/cessda/cessda.cdc.version2/issues/189))
+- (cessda.cdc.admin) Updated Spring Boot Admin to 2.2.3 ([#191](https://bitbucket.org/cessda/cessda.cdc.version2/issues/191))
+- (cessda.cdc.osmh-indexer.cmm) Add more details to 'Configured Repos' log output ([#194](https://bitbucket.org/cessda/cessda.cdc.version2/issues/194))
+- (cessda.cdc.osmh-indexer.cmm) Add more details to 'Configured Repos' log output ([#195](https://bitbucket.org/cessda/cessda.cdc.version2/issues/195))
+- (cessda.cdc.osmh-indexer.cmm) Change SODA publisher name ([#197](https://bitbucket.org/cessda/cessda.cdc.version2/issues/197))
+- (cessda.cdc.osmh-indexer.cmm) Update SND set spec ([#200](https://bitbucket.org/cessda/cessda.cdc.version2/issues/200))
+- (cessda.cdc.osmh-indexer.cmm) Ignore deleted headers ([#206](https://bitbucket.org/cessda/cessda.cdc.version2/issues/206))
+- (cessda.cdc.osmh-indexer.cmm/cessda.cdc.osmh-repository-handler.nesstar) Improve NESSTAR logging ([#207](https://bitbucket.org/cessda/cessda.cdc.version2/issues/207))
+
+## Removed
+
+- (cessda.cdc.searchkit) Convert the interface language to English only ([#164](https://bitbucket.org/cessda/cessda.cdc.version2/issues/164))
+- (cessda.cdc.searchkit) Remove the Elasticsearch proxy ([#237](https://bitbucket.org/cessda/cessda.cdc.version2/issues/237))
 
 ### Fixed
 
+- (cessda.cdc.osmh-indexer.cmm) Fix alphabetical sorting producing unexpected results with lowercase characters ([#171](https://bitbucket.org/cessda/cessda.cdc.version2/issues/171))
 - (cessda.cdc.osmh-repository-handler.oai-pmh) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
-- (cessda.cdc.osmh-repository-handler.nesstar) Disable access to external XML entities in the repository handlers ([#176](https://bitbucket.org/cessda/cessda.cdc.version2/issues/176))
-- (cessda.cdc.osmh-indexer.cmm) Ensure daily harvest does not take place during GCP maintenance window ([#193](https://bitbucket.org/cessda/cessda.cdc.version2/issues/193/ensure-daily-harvest-does-not-take-place))
-- (cessda.cdc.deploy) Use the correct liveness and readiness endpoints in Spring Boot 2.3 ([#194](Use the correct liveness and readiness endpoints in Spring Boot 2.3))
+- (cessda.cdc.osmh-indexer.cmm) Fix rejection reason not showing in the logs ([#184](https://bitbucket.org/cessda/cessda.cdc.version2/issues/184))
+- (cessda.cdc.osmh-indexer.cmm) Ensure daily harvest does not take place during GCP maintenance window ([#193](https://bitbucket.org/cessda/cessda.cdc.version2/issues/193))
+- (cessda.cdc.deploy) Use the correct liveness and readiness endpoints in Spring Boot 2.3 ([#194](https://bitbucket.org/cessda/cessda.cdc.version2/issues/194))
+- (cessda.cdc.osmh-indexer.cmm) Fix title ascending/descending sort options not working ([#209](https://bitbucket.org/cessda/cessda.cdc.version2/issues/209))
+- (cessda.cdc.osmh-indexer.cmm) Fix being unable to run the harvester via Spring Boot Admin JMX ([#211](https://bitbucket.org/cessda/cessda.cdc.version2/issues/211))
+- (cessda.cdc.searchkit) Fix translations not being applied to the sorting selector ([#215](https://bitbucket.org/cessda/cessda.cdc.version2/issues/215))
 
 ## [2.2.1] - 2020-05-04
 
@@ -84,7 +104,7 @@ OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/record/378644
 - moved recursion out of the try-with-resources block to reduce resource consumption
 - reformatted the message when the record headers could not be parsed (because the parser could have failed at any point and left the InputStream is in an inconsistent state
 - use input streams instead of strings (avoids a double copy)
-- renamed 'dev' profile to *gcp*
+- renamed `dev` profile to `gcp`
 - improved logging to help determine quality of harvested metadata ([#191](https://bitbucket.org/cessda/cessda.cdc.version2/issues/91))
 
 ### Deprecated
