@@ -1,42 +1,63 @@
-# CESSDA Data Catalogue v2.2.0
+# CESSDA Data Catalogue v2.5.0
 
-The CESSDA Data Catalogue (CDC) harvests metadata from various endpoints.
-It uses different repository handlers to adapt the payload for each type of endpoint to a standard format (the [CESSDA Metadata Model](https://doi.org/10.5281/zenodo.3236171), CMM).
+The CESSDA Data Catalogue (CDC) can harvest any XML content provided by an OAI-PMH endpoint.
+It uses different sets of XPath mappings to adapt the different flavours of the XML payloads to a standard format,
+namely the [CESSDA Metadata Model](https://doi.org/10.5281/zenodo.4751455).
+
+The CESSDA Metadata Validator (CMV) is part of the pipeline, and is used to perform bulk checks on the harvested files.
+Additional checks are also run (XML Schema validation on DDI 2.5 metadata files) and the validated files are saved to a Google Cloud storage bucket. 
+Note that files are validated in the following sequence: XML Schema; CMV.
+
+The results of the validation checks are sent to an ElasticSearch index that feeds a Kibana dashboard.
+The dashboard shows both summary and detailed information regarding violations (non-conformance with the CDC DDI profiles) and XML Schema validations. 
+The Aggregator component loads the validated files into its storage component and makes them available for aggregators such as OpenAIRE, B2Find and GoTriple to harvest.  
 
 ## Project Structure
 
-The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing and Management. There are also some repositories which are concerned with Documentation & Issue Tracking and QA & Deployment respectively.
+The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing, public API and Management.
+There are also some repositories which are concerned with Documentation & Issue Tracking and QA & Deployment respectively.
 
 ### Data Gathering components
 
-The following *Open Source* code repositories are used to build the harvester components:
+The following *Open Source* code repositories are used to gather and index metadata:
 
-- [cessda.cdc.osmh-indexer.cmm](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm) (harvester that periodically calls the repository handlers which build the Elasticsearch indicies).
-- [cessda.cdc.osmh-repository-handler.nesstar](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar) (repository handler for OAI-PMH enabled NESSTAR endpoints serving DDI 1.2).
-- [cessda.cdc.osmh-repository-handler.oai-pmh](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh) (repository handler for OAI-PMH endpoints serving DDI 2.5).
+- [cessda.eqb.metadata.harvester](https://bitbucket.org/cessda/cessda.eqb.metadata.harvester) (periodically harvests the configured endpoints).
+- [cessda.cdc.osmh-indexer.cmm](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm) (runs after the harvester has finished to update the Elasticsearch indicies).
 
 ### User Facing components
 
-The following *Open Source* code repository is used to build the user facing components:
+The following *Open Source* code repository is used to provide the user facing components:
 
 - [cessda.cdc.searchkit](https://bitbucket.org/cessda/cessda.cdc.searchkit) (user interface).
 
+### Public API components
+
+The following components are part of the Aggregator (an OAI-PMH endpoint for the CDC):
+
+- [cessda.cdc.aggregator.client](https://bitbucket.org/cessda/cessda.cdc.aggregator.client) (Command line client for synchronizing records to CESSDA CDC Aggregator DocStore).
+- [cessda.cdc.aggregator.doc-store](https://bitbucket.org/cessda/cessda.cdc.aggregator.doc-store) (HTTP server providing an API in front of a MongoDB cluster).
+- [cessda.cdc.aggregator.oai-pmh-repo-handler](https://bitbucket.org/cessda/cessda.cdc.aggregator.oai-pmh-repo-handler) (HTTP server providing an OAI-PMH aggregator endpoint serving DocStore records).
+- [cessda.cdc.aggregator.shared-library](https://bitbucket.org/cessda/cessda.cdc.aggregator.shared-library) (Python library containing shared code for the CDC Aggregator).
 
 ### Management components
 
-The following private source code repositories are used to build the management components:
+The following private source code repositories are used to build and deploy the management components:
 
 - cessda.cdc.admin (Spring Boot admin console, the logs are useful to check progress of harvesting).
-- cessda.cdc.deploy/elasticsearch (backend to user interface, provides search and browse functionality).
-- cessda.cdc.deploy/mailrelay (used for sending messages relating to the health and status of the product to the DevOps team).
+- cessda.cdc.aggregator.deploy (deploys the CDC Aggregator components). 
 - cessda.cdc.reverse (reverse proxy used as part of the Certbot automated security certificate renewal process. Also provides authentication for components, as needed).
 - cessda.cdc.sitemapgenerator (generates a sitemap for use by [Google Data Search](https://toolbox.google.com/datasetsearch) crawler).
+
+The following private source code repository applies validation to the harvested metadata records:
+
+- cessda.cmv.console (command line application of the CESSDA Metadata Validator).
 
 ### Documentation & Issue Tracking
 
 The following private source code repositories are used to build the documentation components:
-- cessda.cdc.userguide (source files in reStructuredText markup language that are converted via Sphinx to ReadTheDocs format).
-- cessda.cdc.version2 (contains an issue tracker used internally to record the backlog).
+
+- cessda.cdc.userguide (source files in Markdown which are compiled to static html using Jekyll with the Just the docs theme).
+- cessda.cdc.versions (contains an issue tracker used internally to record the backlog).
 
 ### QA & Deployment
 
@@ -44,7 +65,6 @@ The following private source code repositories are used to test and deploy the p
 
 - cessda.cdc.deploy (contains all the scripts and infrastructure definitions needed to deploy the product).
 - cessda.cdc.test (contains test scripts used to QA the product during the deployment process).
-- cessda.cmm.profile (contains and XSD file that can be used to check that the XML provided by an endpoint is compliant with the CMM profile).
 
 ## Developer documentation
 
@@ -60,7 +80,8 @@ See [CDC User guide](https://datacatalogue.cessda.eu/documentation/) for details
 
 ## Installing
 
-The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component. See also the **'README.md'** file in each of those repositories.
+The Jenkinsfile in each of the Data Gathering and User Facing component repositories defines the build pipeline for that component.
+See also the **'README.md'** file in each of those repositories.
 
 ## Running the tests
 
