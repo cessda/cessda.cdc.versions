@@ -4,14 +4,50 @@ All notable changes to the CESSDA Data Catalogue will be documented in this file
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-*For each release, use the following sub-sections:*
+N.B. From v2.4.0 onwards, only the changes that directly affect the User Experience are recorded here.
+For details of all the changes, see the linked CHANGELOGS of the various components. 
 
-- *Added (for new features)*  
-- *Changed (for changes in existing functionality)*  
-- *Deprecated (for soon-to-be removed features)*  
-- *Removed (for now removed features)*  
-- *Fixed (for any bug fixes)*  
-- *Security (in case of vulnerabilities)*
+## [2.5.0] - 2021-11-23
+
+### Changed
+
+- Change the text in the browser page tab, depending on the current study or search query.
+- Add sorting options for filtering studies by date published.
+- Add Czech language support.
+- Sort by the collection end date, rather than the collection start date.
+- Only show the available date fields on the Detail page.
+- Filter out PID objects that are missing a persistent identifier, fixing cases where the Agency would be displayed on its own.
+- The User Guide has been updated to correspond to the current version of the Data Catalogue.
+
+### CHANGELOGS of the components
+
+- [aggregator.client CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.client/src/main/CHANGELOG.md)
+- [aggregator.doc-store CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.doc-store/src/main/CHANGELOG.md)
+- [aggregator.oai-pmh-repo-handler CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.oai-pmh-repo-handler/src/main/CHANGELOG.md)
+- [aggregator.shared-library CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.shared-library/src/master/CHANGELOG.md)
+- [osmh-indexer.cmm CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/CHANGELOG.md)
+- [searchkit CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/CHANGELOG.md)
+- [cmv.console CHANGELOG](https://bitbucket.org/cessda/cessda.cmv.console/src/master/CHANGELOG.md)
+- [metadata.harvester CHANGELOG](https://bitbucket.org/cessda/cessda.eqb.metadata.harvester/src/master/CHANGELOG.md)
+
+
+## [2.4.0] - 2021-06-23
+
+### Changed
+
+- Autocomplete of the search terms is enabled in the Title, Abstract, Country, Keyword and Topic fields. As an example, using ‘Nurs’ as the search term finds 'nurses', 'nurse', 'nursing', 'nursed' etc.
+- The default operator between search terms is AND. Therefore all the entered search terms will be present in each of the results returned by a simple multi-term search.
+- The NOT search operator is enabled. See the Advanced Search section of the User Guide for details of AND, OR, NOT and other search operations.
+- The Data Catalogue now displays a version number. See the About section.
+- There is a separate button for the User Guide to make it easier to find.
+- The User Guide has been updated to correspond to this version of the Data Catalogue, and some new examples/tips are included.
+- The User Guide has a version number, to show which version of the Data Catalogue it is for.
+
+### CHANGELOGS of the components
+
+- [osmh-indexer.cmm CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/CHANGELOG.md)
+- [searchkit CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/CHANGELOG.md)
+- [osmh-repository-handler.nesstar CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar.deprecated/src/master/CHANGELOG.md)
 
 ## [2.3.0] - 2021-02-09
 
