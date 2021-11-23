@@ -7,6 +7,30 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 N.B. From v2.4.0 onwards, only the changes that directly affect the User Experience are recorded here.
 For details of all the changes, see the linked CHANGELOGS of the various components. 
 
+## [2.5.0] - 2021-11-23
+
+### Changed
+
+- Change the text in the browser page tab, depending on the current study or search query.
+- Add sorting options for filtering studies by date published.
+- Add Czech language support.
+- Sort by the collection end date, rather than the collection start date.
+- Only show the available date fields on the Detail page.
+- Filter out PID objects that are missing a persistent identifier, fixing cases where the Agency would be displayed on its own.
+- The User Guide has been updated to correspond to the current version of the Data Catalogue.
+
+### CHANGELOGS of the components
+
+- [aggregator.client CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.client/src/main/CHANGELOG.md)
+- [aggregator.doc-store CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.doc-store/src/main/CHANGELOG.md)
+- [aggregator.oai-pmh-repo-handler CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.oai-pmh-repo-handler/src/main/CHANGELOG.md)
+- [aggregator.shared-library CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.shared-library/src/master/CHANGELOG.md)
+- [osmh-indexer.cmm CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/CHANGELOG.md)
+- [searchkit CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/CHANGELOG.md)
+- [cmv.console CHANGELOG](https://bitbucket.org/cessda/cessda.cmv.console/src/master/CHANGELOG.md)
+- [metadata.harvester CHANGELOG](https://bitbucket.org/cessda/cessda.eqb.metadata.harvester/src/master/CHANGELOG.md)
+
+
 ## [2.4.0] - 2021-06-23
 
 ### Changed
@@ -21,15 +45,9 @@ For details of all the changes, see the linked CHANGELOGS of the various compone
 
 ### CHANGELOGS of the components
 
-- [aggregator.client CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.client/src/main/CHANGELOG.md)
-- [aggregator.doc-store CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.doc-store/src/main/CHANGELOG.md)
-- [aggregator.oai-pmh-repo-handler CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.oai-pmh-repo-handler/src/main/CHANGELOG.md)
-- [aggregator.shared-library CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.aggregator.shared-library/src/master/CHANGELOG.md)
 - [osmh-indexer.cmm CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/CHANGELOG.md)
 - [searchkit CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/CHANGELOG.md)
-- [cmv.console CHANGELOG](https://bitbucket.org/cessda/cessda.cmv.console/src/master/CHANGELOG.md)
-- [metadata.harvester CHANGELOG](https://bitbucket.org/cessda/cessda.eqb.metadata.harvester/src/master/CHANGELOG.md)
-
+- [osmh-repository-handler.nesstar CHANGELOG](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar.deprecated/src/master/CHANGELOG.md)
 
 ## [2.3.0] - 2021-02-09
 
