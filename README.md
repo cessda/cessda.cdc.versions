@@ -1,8 +1,8 @@
 # CESSDA Data Catalogue v2.5.0
 
 The CESSDA Data Catalogue (CDC) can harvest any XML content provided by an OAI-PMH endpoint.
-It uses different sets of XPath mappings to adapt the different flavours of the XML payloads to a standard format
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4751455.svg)](https://doi.org/10.5281/zenodo.4751455).
+It uses different sets of XPath mappings to adapt the different flavours of the XML payloads to a standard format,
+namely the [CESSDA Metadata Model](https://doi.org/10.5281/zenodo.4751455).
 
 The CESSDA Metadata Validator (CMV) is part of the pipeline, and is used to perform bulk checks on the harvested files.
 Additional checks are also run (XML Schema validation on DDI 2.5 metadata files) and the validated files are saved to a Google Cloud storage bucket. 
