@@ -1,18 +1,17 @@
-# Operations Documentation - CESSDA Data Catalogue v2.2.0
-
-[BACK](README.md)
-
+# Operations Documentation - CESSDA Data Catalogue
 
 ## Managing the Elasticsearch (ES) indices
 
 ### Checking that indices exist
 
-To check that language indexes have been created, look at the [cessda-cdc-es-backup storage bucket](https://console.cloud.google.com/storage/browser/cessda-cdc-es-backup/indices/?organizationId=776004534695&project=cessda-prod) in the **'Cessda Production GCP project'**. Don't delete anything directly from here.
+<!-- TODO: Rewrite this entire document, as it is painfully out of date -->
+
+To check that language indexes have been created, look at the [cessda-cdc-es-backup storage bucket](https://console.cloud.google.com/storage/browser/cessda-cdc-es-backup/indices/?organizationId=776004534695&project=cessda-prod) in the **'CESSDA Production GCP project'**. Don't delete anything directly from here.
 
 There should be a folder of the form **'cmmstudy_xx'** for each language code in the osmhConsumer.languages section of the osmh-indexer's [application.yaml file](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml).
-.
 
 ### Deleting one or more indices
+
 One option is use [elasticsearch-head](https://mobz.github.io/elasticsearch-head/) either as an Elasticsearch plugin or a Chrome browser extension, and connect to one of clusters (be VERY careful if connecting to the Production cluster). You will need a username and password to connect to the ES cluster, which can be found in the password manager. Once connected, you can delete one or more language-specific indices as required, to prepare for a clean (i.e. from scratch) harvest.
 
 ### Re-harvesting

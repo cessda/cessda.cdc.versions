@@ -1,67 +1,135 @@
-# Developer Documentation - CESSDA Data Catalogue v2.2.0
+# Developer Documentation - CESSDA Data Catalogue
 
 [BACK](README.md)
 
 ## Getting Started
 
-The various Jenkins jobs in the Jenkins [DataCat](https://cit.cessda.eu/view/DataCat/) view are used to build, test and deploy the CDC components. They are triggered automatically when code changes are committed to any of the [CDC Bitbucket repos](https://bitbucket.org/account/user/cessda/projects/CDC).
+The various Jenkins jobs in the Jenkins [CDC](https://jenkins.cessda.eu/view/CDC/) view are used to build, test and deploy the CDC components. They are triggered automatically when code changes are committed to any of the [Data Catalogue Bitbucket repos](https://bitbucket.org/account/user/cessda/projects/CDC).
 
 ## Harvesting Runs
 
-1. **Initial full run** - Runs upon application start with a delay of 60 seconds.  Does a full harvest and ingest of all records for all configured endpoints (see 'add endpoint/update URL' for endpoint configuration details).
+1. **Full run** - Triggered from the `cdc-agg-harvester-full` CronJob.  Does a full harvest of all records for all configured endpoints (see 'add endpoint/update URL' for endpoint configuration details).
+1. **Incremental run** - Triggered from the `cdc-agg-harvester-incremental` job. Runs daily.  Does an incremental harvest and ingestion of records for all configured endpoints, based on the most recent ingested lastModified date.
 
-1. **Incremental run** - Runs daily (at 00:01).  Does an incremental harvest and ingestion of records for all configured endpoints, based on the most recent ingested lastModified date.
+### Adding a new endpoint
 
-1. **Weekly full run** - Runs weekly (Sundays at 09:00, enough time for the daily incremental run to
- have finished).  Does a full harvest and ingest of records for all configured endpoints.
+To add a new endpoint, add the necessary configuration to the [cessda.metadata.harvester configuration file](https://bitbucket.org/cessda/cessda.metadata.harvester/src/master/src/main/resources/application-cdc.yml)
 
-## Common tasks
+The configuration format is documented in the [README for the Metadata Harvester](https://bitbucket.org/cessda/cessda.metadata.harvester/src/master/README.md).
 
-Make sure the various harvester instances (dev, staging, production) are not run in parallel against the endpoints, as some of the endpoints may time out under the load, and not deliver all the available metadata.
-- set the harvesting times via the [application.yml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml).
+The required configuration will be automatically propagated through the pipeline.
 
-Adjust the read timeout, as required, via the [application.yml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml).
-- update the cessda.cdc.osmh-indexer.cmm README file after making changes.
+### Adding a new language
 
-### To add new endpoint/update URL of existing endpoint, edit the following files:
+Adding a new language to the Data Catalogue requires configuring the indexer so that the language's index can be created and has the correct text analysis settings. Each language has its own Elasticsearch index which needs language specific configuration. The naming conventions for settings files is `settings_cmmstudy_{lang}.json` where `{lang}` is a 2 letter ISO language code.
 
-cessda.cdc.osmh-indexer.cmm [harvester configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/main/resources/application.yml),
+The text analysis settings files can be found in the [cessda.cdc.osmh-indexer.cmm indexer settings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/main/resources/elasticsearch/settings/). Use one of the existing files as a template. The documentation of text analysis settings can be found at <https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-overview.html>.
 
-cessda.cdc.osmh-indexer.cmm [harvester tests](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/test/java/eu/cessda/cdc/oci/repository/cdcHarvesterDaoTest.java).
+The locales also need to be configured in `src/main/java/eu/cessda/pasc/oci/configurations/AppConfigurationProperties.java`. Modify the `languages` field to include the new language.
 
-Depending on the repository type, you also need to edit EITHER:
+The language also needs to be configured in Searchkit in the `languages` array in `src/utilities/language.ts`.
 
-cessda.cdc.osmh-repository-handler.oai-pmh [oai-pmh repository handler configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh/src/development/src/main/resources/application.yml),
+```js
+{
+	code: 'en', // ISO language code
+	label: 'English', // Label to present in the user interface
+	index: 'cmmstudy_en' // The Elasticsearch index to use
+}
+```
 
-and cessda.cdc.osmh-repository-handler.oai-pmh [oai-pmh repository handler tests](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.oai-pmh/src/development/src/test/java/eu/cessda/cdc/osmhhandler/oaipmh/configuration/HandlerConfigurationPropertiesTest.java).
+Translations for the language should also be added to `translations/{lang}.json`. Use one of the existing language files as a template.
 
-OR:
+## Data Catalogue Data Model
 
-cessda.cdc.osmh-repository-handler.nesstar [NESSTAR repository handler configuration](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar/src/development/src/main/resources/application.yml),
+The internal model of the Datacatalogue is defined as below. All intermediate formats are JSON.
 
-and cessda.cdc.osmh-repository-handler.nesstar [NESSTAR repository handler tests](https://bitbucket.org/cessda/cessda.cdc.osmh-repository-handler.nesstar/src/development/src/test/java/eu/cessda/cdc/osmhhandler/nesstar/configuration/HandlerConfigurationPropertiesTest.java).
+See <https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/json/schema/CMMStudySchema.json> for the multilingual schema definition.
 
+### CMMStudy Field Definitions
 
-### To add language, create a new file in:
+| Field Name | Description |
+| ---------- | ----------- |
+| `id`       | The internal identifier for the study |
+| `code`     | The short name of the repository that the study originates from |
+| `creators` | A string array of the creators of the study |
+| `dataCollectionPeriodStartdate` | The starting date of the data collection period, ideally represented as an ISO date |
+| `dataCollectionPeriodEnddate` | The ending date of the data collection period, ideally represented as an ISO date |
+| `dataCollectionYear` | The year in which the data was collected, in most cases represented as an integer |
+| `dataCollectionFreeTexts` | An array of objects containing text describing extra information on how the data was collected, as well as the event related to this data collection |
+| `dataAccessFreeTexts` | An string array describing the conditions of access to the source data |
+| `publicationYear` | The year that the study was published |
+| `typeOfModeOfCollections` | An array of vocabulary objects describing the collection modes used |
+| `keywords` | An array of vocabulary objects describing the keywords of the study |
+| `samplingProcedureFreeTexts` | A string array of the sampling procedures that were used in the study |
+| `classifications` | An array of vocabulary objects describing the topic classifications |
+| `abstract` | The abstract of the study |
+| `titleStudy` | The title of the study |
+| `studyUrl` | The URL of the study description page in the SP's catalogue |
+| `studyNumber` | |
+| `fileLanguages` | A string array of the languages that the source data file is available in |
+| `typeOfTimeMethods` | An array of vocabulary objects describing the type of time methods used |
+| `typeOfSamplingProcedures` | An array of vocabulary objects describing the sampling procedures used in the study |
+| `publisher` | A publisher object describing the publisher of the study |
+| `studyAreaCountries` | An array of country objects describing the countries that participated in the study |
+| `unitTypes` | An array of vocabulary objects describing the unit types of the study |
+| `pidStudies` | An array of PID objects describing the persistent identifiers of the study |
+| `lastModified` | The time when the metadata of the study was last modified as an ISO date |
+| `langAvailableIn` | An array of strings describing the languages the metadata description of the study is available in |
+| `studyXmlSourceUrl` | The URL of the OAI-PMH repository where the source of the metadata is located |
+| `universes` | The universes that were studied in the study |
 
-cessda.cdc.osmh-indexer.cmm [Harvester mappings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/main/resources/elasticsearch/mappings/),
+### Vocabulary Object Definition
 
-cessda.cdc.osmh-indexer.cmm [Harvester settings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/main/resources/elasticsearch/settings/),
+| Field Name | Description |
+| ---------- | ----------- |
+| `vocab` | The name of the vocabulary |
+| `vocabUri` | The URI of the vocabulary (but not the URI of the item) |
+| `id` | The ID of the item in the vocabulary being referenced |
+| `term` | The text content of the item in the vocabulary |
 
-cessda.cdc.searchkit [Searchkit locales directory](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/master/src/locales/)
+### Country Object Definition
 
-and edit following files so lists of languages match:
+| Field Name | Description |
+| ---------- | ----------- |
+| `country` | The name of the country as presented in the source DDI document |
+| `abbr` | The ISO code representing the country |
+| `searchField` | The country name normalised for searching using the ISO code |
 
-cdc.osmh-indexer.cmm [application.yaml](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/main/resources/application.yaml).
+### Data Collection Free Text Object Definition
 
-cdc.osmh-indexer.cmm [LanguageDocumentExtractorTest.java](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/test/java/eu/cessda/cdc/oci/service/helpers/LanguageDocumentExtractorTest.java).
+| Field Name | Description |
+| ---------- | ----------- |
+| `dataCollectionFreeText` | The text describing the data collection |
+| `event` | The event corresponding to this data collection |
 
-cessda.cdc.searchkit [Searchkit language.js](https://bitbucket.org/cessda/cessda.cdc.searchkit/src/dev/src/utilities/language.js)
+### Persistent Identifier Object Definition
 
-## Springboot Admin
+| Field Name | Description |
+| ---------- | ----------- |
+| `agency` | The agency responsible for the persistent identifier, i.e. DOI |
+| `pid` | The persistent identifier |
 
-If you cannot see a component in the [Springboot Admin GUI for dev](https://datacatalogue-dev.cessda.eu/admin/#/) or [Springboot Admin GUI for staging](https://datacatalogue-staging.cessda.eu/admin/#/) or [Springboot Admin GUI for production](https://datacatalogue.cessda.eu/admin/#/),  
-then redeploy the missing component (`cessda.cdc.osmh-indexer.cmm, cessda.cdc.osmh-repository-handler.nesstar` or `cessda.cdc.osmh-repository-handler.oai-pmh`) via Jenkins,
-so it can register with Springboot Admin.
+### Publisher Object Definition
 
-Make sure that the Docker file has the `"-Dspring.profiles.active"` flag set to the correct profile name (dev, uat or prod) otherwise the component will not register.
+| Field Name | Description |
+| ---------- | ----------- |
+| `abbr` | The short name or abbreviation of the publisher |
+| `publisher` | The full name of the publisher |
+
+## Adding a new field to the CDC
+
+### Indexer
+
+- Add field to `models/cmmstudy/CMMStudy.java` and `models/cmmstudy/CMMStudyOfLanguage.java`
+	- For multilingual fields the field in `models/cmmstudy/CMMStudy.java` should be a `Map<String, T>` where T is the desired type
+	- This will be unwrapped to `T` in `models/cmmstudy/CMMStudyOfLanguage.java`
+	- Add `@JsonProperty` annotations to ensure the field names remain consistent
+- Add JSON definition to `src/main/resources/json/schema/CMMStudy.schema.json`
+	- This must match the multilingual definitions
+- Add Elasticsearch field definition to `src/main/resources/elasticsearch/mappings/mappings_cmmstudy.json`
+
+### Searchkit
+
+- Add field and normalisation (`getStudyModel()`) to  `common/metadata.ts`
+	- Once normalised, there should be no instances of `undefined`
+- Add display information to `src/components/Detail.tsx`
