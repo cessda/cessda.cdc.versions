@@ -2,26 +2,64 @@
 
 ## Managing the Elasticsearch (ES) indices
 
-### Checking that indices exist
+The Elasticsearch cluster used to run the Data Catalogue is available on the catalogues endpoint, i.e. at <https://datacatalogue.cessda.eu/es/>. This endpoint is password protected (the password can be found in 1Password).
 
-<!-- TODO: Rewrite this entire document, as it is painfully out of date -->
+To check that language indexes have been created, perform a `GET /_cat/indices` request to Elasticsearch (`https://datacatalogue.cessda.eu/es/_cat/indices`). This should return a result that looks like this.
 
-To check that language indexes have been created, look at the [cessda-cdc-es-backup storage bucket](https://console.cloud.google.com/storage/browser/cessda-cdc-es-backup/indices/?organizationId=776004534695&project=cessda-prod) in the **'CESSDA Production GCP project'**. Don't delete anything directly from here.
+```text
+green open cmmstudy_da      9sAfhuSlTQ-0n5mUsA22NA 2 0  55866      0  22.9mb  22.9mb
+green open cmmstudy_nl      lSp-CY3bT1GOqexcSbkh8Q 2 0  73839  33545  42.6mb  42.6mb
+green open cmmstudy_sk      6CNX6nBmT3WSZiUtvIhSzg 2 0    370      0 264.6kb 264.6kb
+green open cmmstudy_sl      5suTR6TfTWSlcw9aTbAIYQ 2 0   2362      0   1.1mb   1.1mb
+green open cmmstudy_fi      2TsPwBbAQfScY2KDlOnjoQ 2 0  70431  12604  42.6mb  42.6mb
+green open cmmstudy_sv      cLC8CFcsTduzt_V6lDmXDA 2 0  16702   1195   8.1mb   8.1mb
+green open cmmstudy_pt      FpuyMaTeRAqakFiAOA2hOA 2 0      0      0    504b    504b
+green open cmmstudy_sr      VayHh0mwQRCttHSCjYdmVA 2 0      0      0    504b    504b
+green open cmmstudy_de      2Wabj5yiRNCdnZYLwYKvbA 2 0  90216      0 127.3mb 127.3mb
+green open cmmstudy_no      fTOR_uY7SSmSxtfs7azlJA 2 0      0      0    504b    504b
+green open cmmstudy_it      UUqW-oC7QWKmDASbkWiJvA 2 0      0      0    504b    504b
+green open cmmstudy_fr      u-1zWeqQShyRs3O-C6i0mA 2 0  36012  32424  34.2mb  34.2mb
+green open cmmstudy_hu      SND6EAN1QyajTfHWnZJWSQ 2 0      0      0    504b    504b
+green open cmmstudy_el      VNq9cpPMSUS9dU6bLdfclQ 2 0   9026   2211     8mb     8mb
+green open cmmstudy_en      rCJwDKb2Rd-ntMAg7tmuoA 2 0 948749 217044 519.3mb 519.3mb
+green open cmmstudy_et      OtngDK4yQi2roJa-GUx6KQ 2 0      0      0    504b    504b
+green open cmmstudy_cs      3hGeh3X1RxCZav_qydw6iw 2 0      0      0    504b    504b
+```
 
-There should be a folder of the form **'cmmstudy_xx'** for each language code in the osmhConsumer.languages section of the osmh-indexer's [application.yaml file](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/application.yml).
+There should be a `cmmstudy` index for each enabled language. Some languages may be missing if no studies in that language were harvested. For more details on the `_cat/indices` API, see <https://www.elastic.co/guide/en/elasticsearch/reference/7.17/cat-indices.html>.
 
 ### Deleting one or more indices
 
-One option is use [elasticsearch-head](https://mobz.github.io/elasticsearch-head/) either as an Elasticsearch plugin or a Chrome browser extension, and connect to one of clusters (be VERY careful if connecting to the Production cluster). You will need a username and password to connect to the ES cluster, which can be found in the password manager. Once connected, you can delete one or more language-specific indices as required, to prepare for a clean (i.e. from scratch) harvest.
+To delete an index, perform a `DELETE /${index_name}` request to Elasticsearch, where `${index_name}` is the name of the index that should be deleted. The wildcard character (`*`) can be used to specify multiple indices for deletion. For more details see <https://www.elastic.co/guide/en/elasticsearch/reference/7.17/indices-delete-index.html> for complete details of the API.
+
+For example, to delete the English index the request to issue is `DELETE /cmmstudy_en`. To delete all indices, the request to issue is `DELETE /cmmstudy_*`.
 
 ### Re-harvesting
 
-To re-harvest outside of scheduled harvesting periods, run the Jenkins job [cessda.cdc.deploy](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.deploy/job/master/build?delay=0sec) with module set to **'osmh-indexer'** and cluster set to **'development-cluster'** or **'staging-cluster'**, depending on which instance needs to be updated. If you have deleted one or more language-specific indices for a given instance of CDC since the harvester last ran for that instance, then you will get a clean harvest for that language, otherwise it will be incremental (any new, edited and deleted records will be added, updated and removed respectively, all others will remain unchanged).
+To re-harvest outside of scheduled harvesting periods, run the Kubernetes CronJob for the harvester. This can be done from the Google Cloud Console (see the development project: <https://console.cloud.google.com/kubernetes/workload/overview?project=cessda-dev>). For an incremental harvest run `cdc-agg-harvester-incremental` and for full harvests run `cdc-agg-harvester-full`.
+
+The incremental harvest will only ingest records that were changed in the last week, whereas the full harvest will retrieve every record regardless on when it was updated. Full harvests will also delete records that are no longer present in the source repository.
+
+### Re-indexing
 
 ### Create a snapshot
 
 The [Jenkins ES backup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es.backup/) creates a daily snapshot of the ES indices used by the production instance of CDC. [The Jenkins cleanup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es.backup/job/Cleanup/) also runs daily, to limit the number of snapshots that are available, to save on disk space.
 
-### Restore a snaspshot
+### Restore a snapshot
 
-Use the  restore function of the [Jenkins ES backup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es.backup/job/Restore/). Select master, production or staging to specify the CDC instance to restore to then specify the snapshot to restore (e.g. **'snapshot_53'**).
+Use the restore function of the [Jenkins ES backup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es.backup/job/Restore/). Select master, production or staging to specify the CDC instance to restore to then specify the snapshot to restore (e.g. **'snapshot_53'**).
+
+## Checking the CDC XML store
+
+When the datacatalogue harvests from remote repositories, it stores the responses as XML files in a Google Cloud storage bucket. This can be accessed via the Google Cloud console, or using `gsutil` on the command line ([`gsutil` documentation](https://cloud.google.com/storage/docs/gsutil)). The storage bucket is located at [gs://cessda-cdc-aggregator-storage](https://console.cloud.google.com/storage/browser/cessda-cdc-aggregator-storage).
+
+The harvested XML files are stored in 3 folders:
+
+- Wrapped (with the OAI-PMH envelope)
+- Unwrapped (with the OAI-PMH envelope stripped, keeping only the raw DDI metadata)
+- Validated (with the OAI-PMH envelope, passed CMV validation)
+
+Repository configuration is stored in `pipeline.json` alongside the harvested XML files. The `pipeline.json` files are created by the harvester and consumed by downstream components.
+
+The store should maintain itself, deleting records when they are removed from endpoints.

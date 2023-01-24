@@ -25,10 +25,6 @@ A: Currently only metadata represented as DDI 2.5 Codebook is supported.
 Q: Can more types of endpoints be harvested?
 
 A: Yes, more handlers can be added, but they need to be developed.
-
-Q: Can more endpoints of the same type (OAI-PMH DDI 1.2/DDI 2.5) be harvested?
-
-A: Yes, it is relatively easy to add a new endpoint of the same type.
   
 Q: Is there a general overview of the CDC available?
 

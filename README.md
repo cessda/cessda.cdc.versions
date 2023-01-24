@@ -14,7 +14,7 @@ The CDC product is made up of several components, which can be grouped as Data G
 
 The following *Open Source* code repositories are used to gather and index metadata:
 
-- [cessda.eqb.metadata.harvester](https://bitbucket.org/cessda/cessda.eqb.metadata.harvester) (periodically harvests the configured endpoints).
+- [cessda.metadata.harvester](https://bitbucket.org/cessda/cessda.metadata.harvester) (periodically harvests the configured endpoints).
 - [cessda.cdc.osmh-indexer.cmm](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm) (runs after the harvester has finished to update the Elasticsearch indicies).
 
 ### User Facing components
@@ -36,12 +36,11 @@ The following components are part of the Aggregator (an OAI-PMH endpoint for the
 
 The following private source code repositories are used to build and deploy the management components:
 
-- cessda.cdc.admin (Spring Boot admin console, the logs are useful to check progress of harvesting).
 - cessda.cdc.aggregator.deploy (deploys the CDC Aggregator components).
 - cessda.cdc.reverse (reverse proxy used as part of the Certbot automated security certificate renewal process. Also provides authentication for components, as needed).
 - cessda.cdc.sitemapgenerator (generates a sitemap for use by [Google Data Search](https://toolbox.google.com/datasetsearch) crawler).
 
-The following private source code repository applies validation to the harvested metadata records:
+The following public source code repository applies validation to the harvested metadata records:
 
 - cessda.cmv.console (command line application of the CESSDA Metadata Validator).
 
@@ -89,7 +88,7 @@ The Jenkinsfile in each of the Data Gathering and User Facing component reposito
 
 ## Contributing
 
-Please read [CESSDA Guideline for developers](https://bitbucket.org/cessda/cessda.guidelines.cit/wiki/Developers) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read the [CESSDA Software Development Guidelines](https://docs.tech.cessda.eu/software/ta-sw-dev-guide.html) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
