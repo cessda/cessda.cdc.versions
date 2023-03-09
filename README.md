@@ -14,23 +14,23 @@ The CDC product is made up of several components, which can be grouped as Data G
 
 The following *Open Source* code repositories are used to gather and index metadata:
 
-- [cessda.metadata.harvester](https://bitbucket.org/cessda/cessda.metadata.harvester) (periodically harvests the configured endpoints).
-- [cessda.cdc.osmh-indexer.cmm](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm) (runs after the harvester has finished to update the Elasticsearch indicies).
+- [cessda.metadata.harvester](https://github.com/cessda/cessda.metadata.harvester) (periodically harvests the configured endpoints).
+- [cessda.cdc.osmh-indexer.cmm](https://github.com/cessda/cessda.cdc.osmh-indexer.cmm) (runs after the harvester has finished to update the Elasticsearch indicies).
 
 ### User Facing components
 
 The following *Open Source* code repository is used to provide the user facing components:
 
-- [cessda.cdc.searchkit](https://bitbucket.org/cessda/cessda.cdc.searchkit) (user interface).
+- [cessda.cdc.searchkit](https://github.com/cessda/cessda.cdc.searchkit) (user interface).
 
 ### Public API components
 
 The following components are part of the Aggregator (an OAI-PMH endpoint for the CDC):
 
-- [cessda.cdc.aggregator.client](https://bitbucket.org/cessda/cessda.cdc.aggregator.client) (Command line client for synchronizing records to CESSDA CDC Aggregator DocStore).
-- [cessda.cdc.aggregator.doc-store](https://bitbucket.org/cessda/cessda.cdc.aggregator.doc-store) (HTTP server providing an API in front of a MongoDB cluster).
-- [cessda.cdc.aggregator.oai-pmh-repo-handler](https://bitbucket.org/cessda/cessda.cdc.aggregator.oai-pmh-repo-handler) (HTTP server providing an OAI-PMH aggregator endpoint serving DocStore records).
-- [cessda.cdc.aggregator.shared-library](https://bitbucket.org/cessda/cessda.cdc.aggregator.shared-library) (Python library containing shared code for the CDC Aggregator).
+- [cessda.cdc.aggregator.client](https://github.com/cessda/cessda.cdc.aggregator.client) (Command line client for synchronizing records to CESSDA CDC Aggregator DocStore).
+- [cessda.cdc.aggregator.doc-store](https://github.com/cessda/cessda.cdc.aggregator.doc-store) (HTTP server providing an API in front of a MongoDB cluster).
+- [cessda.cdc.aggregator.oai-pmh-repo-handler](https://github.com/cessda/cessda.cdc.aggregator.oai-pmh-repo-handler) (HTTP server providing an OAI-PMH aggregator endpoint serving DocStore records).
+- [cessda.cdc.aggregator.shared-library](https://github.com/cessda/cessda.cdc.aggregator.shared-library) (Python library containing shared code for the CDC Aggregator).
 
 ### Management components
 

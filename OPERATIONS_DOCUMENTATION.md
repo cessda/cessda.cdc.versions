@@ -48,7 +48,7 @@ The [Jenkins ES backup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es
 
 ### Restore a snapshot
 
-Use the restore function of the [Jenkins ES backup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es.backup/job/Restore/). Select master, production or staging to specify the CDC instance to restore to then specify the snapshot to restore (e.g. **'snapshot_53'**).
+Use the restore function of the [Jenkins ES backup job](https://jenkins.cessda.eu/view/CDC/job/cessda.cdc.es.backup/job/Restore/). Select main, production or staging to specify the CDC instance to restore to then specify the snapshot to restore (e.g. **'snapshot_53'**).
 
 ## Checking the CDC XML store
 

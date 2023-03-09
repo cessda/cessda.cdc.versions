@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-The various Jenkins jobs in the Jenkins [CDC](https://jenkins.cessda.eu/view/CDC/) view are used to build, test and deploy the CDC components. They are triggered automatically when code changes are committed to any of the [Data Catalogue Bitbucket repos](https://bitbucket.org/account/user/cessda/projects/CDC).
+The various Jenkins jobs in the Jenkins [CDC](https://jenkins.cessda.eu/view/CDC/) view are used to build, test and deploy the CDC components. They are triggered automatically when code changes are committed to any of the [Data Catalogue Bitbucket repos](https://github.com/account/user/cessda/projects/CDC).
 
 ## Harvesting Runs
 
@@ -13,9 +13,9 @@ The various Jenkins jobs in the Jenkins [CDC](https://jenkins.cessda.eu/view/CDC
 
 ### Adding a new endpoint
 
-To add a new endpoint, add the necessary configuration to the [cessda.metadata.harvester configuration file](https://bitbucket.org/cessda/cessda.metadata.harvester/src/master/src/main/resources/application-cdc.yml)
+To add a new endpoint, add the necessary configuration to the [cessda.metadata.harvester configuration file](https://github.com/cessda/cessda.metadata.harvester/blob/main/src/main/resources/application-cdc.yml)
 
-The configuration format is documented in the [README for the Metadata Harvester](https://bitbucket.org/cessda/cessda.metadata.harvester/src/master/README.md).
+The configuration format is documented in the [README for the Metadata Harvester](https://github.com/cessda/cessda.metadata.harvester/blob/main/README.md).
 
 The required configuration will be automatically propagated through the pipeline.
 
@@ -23,7 +23,7 @@ The required configuration will be automatically propagated through the pipeline
 
 Adding a new language to the Data Catalogue requires configuring the indexer so that the language's index can be created and has the correct text analysis settings. Each language has its own Elasticsearch index which needs language specific configuration. The naming conventions for settings files is `settings_cmmstudy_{lang}.json` where `{lang}` is a 2 letter ISO language code.
 
-The text analysis settings files can be found in the [cessda.cdc.osmh-indexer.cmm indexer settings directory](https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/main/src/main/resources/elasticsearch/settings/). Use one of the existing files as a template. The documentation of text analysis settings can be found at <https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-overview.html>.
+The text analysis settings files can be found in the [cessda.cdc.osmh-indexer.cmm indexer settings directory](https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/tree/main/src/main/resources/elasticsearch/settings/). Use one of the existing files as a template. The documentation of text analysis settings can be found at <https://www.elastic.co/guide/en/elasticsearch/reference/7.17/analysis-overview.html>.
 
 The locales also need to be configured in `src/main/java/eu/cessda/pasc/oci/configurations/AppConfigurationProperties.java`. Modify the `languages` field to include the new language.
 
@@ -43,7 +43,7 @@ Translations for the language should also be added to `translations/{lang}.json`
 
 The internal model of the Datacatalogue is defined as below. All intermediate formats are JSON.
 
-See <https://bitbucket.org/cessda/cessda.cdc.osmh-indexer.cmm/src/master/src/main/resources/json/schema/CMMStudySchema.json> for the multilingual schema definition.
+See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/resources/json/schema/CMMStudySchema.json> for the multilingual schema definition.
 
 ### CMMStudy Field Definitions
 
