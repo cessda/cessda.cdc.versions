@@ -100,7 +100,7 @@ You can find the list of contributors in the `CONTRIBUTORS.md` file for each com
 
 ## License
 
-See the [LICENSE](LICENSE) file for each component repository.
+See the [LICENSE](LICENSE.txt) file for each component repository.
 
 ## FAQs
 
