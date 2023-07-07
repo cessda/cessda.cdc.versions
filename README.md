@@ -1,4 +1,4 @@
-# CESSDA Data Catalogue v3.1.1
+# CESSDA Data Catalogue
 
 The CESSDA Data Catalogue (CDC) can harvest any XML content provided by an OAI-PMH endpoint. It uses different sets of XPath mappings to adapt the different flavours of the XML payloads to a standard format, namely the [CESSDA Metadata Model](https://doi.org/10.5281/zenodo.4751455).
 
@@ -8,7 +8,7 @@ The results of the validation checks are sent to an ElasticSearch index that fee
 
 ## Project Structure
 
-The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing, public API and Management. There are also some repositories which are concerned with Documentation & Issue Tracking and QA & Deployment respectively.
+The CDC product is made up of several components, which can be grouped as Data Gathering, User Facing, Public API and Management. There are also some repositories which are concerned with Documentation & Issue Tracking and QA & Deployment respectively.
 
 ### Data Gathering components
 
