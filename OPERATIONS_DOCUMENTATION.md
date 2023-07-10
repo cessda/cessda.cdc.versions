@@ -1,5 +1,26 @@
 # Operations Documentation - CESSDA Data Catalogue
 
+## Adding a new repository to the CESSDA Data Catalogue
+
+Adding a repository to the Data Catalogue is a simple process. There is only one file that needs to be modified, which can be found at <https://github.com/cessda/cessda.cdc.aggregator.deploy/blob/main/charts/harvester/config/config.yaml>.
+
+To create a new repository, create a new entry under `harvester.repos`. Feel free to use an existing repository configuration entry as a reference.
+
+- `code` - Short name used in logs
+- `name` - Friendly name shown in the user interface
+- `url` - URL of the OAI-PMH endpoint of the repository
+- `validationGate` - The CMV validation gate to use. See <https://cmv.cessda.eu/documentation/constraints.html> for validation gate definitions.
+- `metadataPrefixes` - Specific harvester configurations
+
+Multiple metadata prefixes and sets can be configured for the same repository.
+
+- `metadataPrefix` - the metadata prefix to harvest
+- `setSpec` - the set to harvest, can be omitted
+- `validationProfile` - the CMV profile to validate against, see <https://cmv.cessda.eu/documentation/profiles.html>
+- `ddiVersion` - the DDI version harvested, currently unused
+
+See <https://github.com/cessda/cessda.metadata.harvester/blob/main/README.md> for the full definition of the configuration file.
+
 ## Managing the Elasticsearch (ES) indices
 
 The Elasticsearch cluster used to run the Data Catalogue is available on the catalogues endpoint, i.e. at <https://datacatalogue.cessda.eu/es/>. This endpoint is password protected (the password can be found in 1Password).
