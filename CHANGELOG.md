@@ -7,19 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 N.B. From v2.4.0 onwards, only the changes that directly affect the User Experience are recorded here.
 For details of all the changes, see the linked CHANGELOGS of the various components.
 
-## [2.5.0] - 2021-11-23
-
-### Changed
-
-- Change the text in the browser page tab, depending on the current study or search query.
-- Add sorting options for filtering studies by date published.
-- Add Czech language support.
-- Sort by the collection end date, rather than the collection start date.
-- Only show the available date fields on the Detail page.
-- Filter out PID objects that are missing a persistent identifier, fixing cases where the Agency would be displayed on its own.
-- The User Guide has been updated to correspond to the current version of the Data Catalogue.
-
-### CHANGELOGS of the components
+## CHANGELOGS of the components
 
 - [aggregator.client CHANGELOG](https://github.com/cessda/cessda.cdc.aggregator.client/blob/main/CHANGELOG.md)
 - [aggregator.doc-store CHANGELOG](https://github.com/cessda/cessda.cdc.aggregator.doc-store/blob/main/CHANGELOG.md)
@@ -30,6 +18,86 @@ For details of all the changes, see the linked CHANGELOGS of the various compone
 - [cmv.console CHANGELOG](https://github.com/cessda/cessda.cmv.console/blob/main/CHANGELOG.md)
 - [metadata.harvester CHANGELOG](https://github.com/cessda/cessda.eqb.metadata.harvester/blob/main/CHANGELOG.md)
 
+## [3.4.1] - 2023-09-26
+
+### Changed
+
+- No user-facing changes.
+
+## [3.4.0] - 2023-08-29
+
+### Changed
+
+- A keyword filter function has been added.
+- Topics and keywords have been moved higher up in the detailed study view.
+- The display of countries have been changed from list to comma-separated.
+- The ‘Send feedback’ button has been made more visible.
+- The feedback form has been restyled.
+- Some accessibility improvements have been made.
+
+## [3.3.0] - 2023-06-13
+
+### Changed
+
+- No user-facing changes.
+
+## [3.2.1] - 2023-03-23
+
+### Changed
+
+- No user-facing changes.
+
+## [3.2.0] - 2022-12-08
+
+### Changed
+
+- Added Universe and Related publications fields to study details page.
+- Made the search filters "float", keeping them onscreen when the search page is scrolled.
+
+## [3.1.1] - 2022-11-08
+
+### Changed
+
+- No user-facing changes.
+
+## [3.1.0] - 2022-09-22
+
+### Changed
+
+- Switched from JIRA to EOSC Helpdesk for capturing end-user issues.
+
+## [3.0.3] - 2022-09-13
+
+### Changed
+
+- No user-facing changes.
+
+## [3.0.2] - 2022-09-06
+
+### Changed
+
+- Fixed the search not returning expected results by restricting the search operators that can be used.
+
+## [3.0.0] - 2022-06-07
+
+### Changed
+
+- Changed the order of the buttons on the right hand side of the menu bar.
+- Added a button to take the user to the Search API documentation.
+- Add the current language to the request URL in the User Interface.
+- Record identifiers used in the OAI-PMH compliant endpoint are unified with those in the User Interface.
+- Trimmed abstracts over a fixed number of characters on the search results page.
+  
+## [2.5.0] - 2021-11-23
+
+### Changed
+
+- Change the text in the browser page tab, depending on the current study or search query.
+- Add sorting options for filtering studies by date published.
+- Add Czech language support.
+- Sort by the collection end date, rather than the collection start date.
+- Only show the available date fields on the Detail page.
+- Filter out PID objects that are missing a persistent identifier, fixing cases where the Agency would be displayed on its own.
 
 ## [2.4.0] - 2021-06-23
 
@@ -40,13 +108,7 @@ For details of all the changes, see the linked CHANGELOGS of the various compone
 - The NOT search operator is enabled. See the Advanced Search section of the User Guide for details of AND, OR, NOT and other search operations.
 - The Data Catalogue now displays a version number. See the About section.
 - There is a separate button for the User Guide to make it easier to find.
-- The User Guide has been updated to correspond to this version of the Data Catalogue, and some new examples/tips are included.
 - The User Guide has a version number, to show which version of the Data Catalogue it is for.
-
-### CHANGELOGS of the components
-
-- [osmh-indexer.cmm CHANGELOG](https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/CHANGELOG.md)
-- [searchkit CHANGELOG](https://github.com/cessda/cessda.cdc.searchkit/blob/main/CHANGELOG.md)
 
 ## [2.3.0] - 2021-02-09
 
@@ -96,14 +158,6 @@ For details of all the changes, see the linked CHANGELOGS of the various compone
 - (cessda.cdc.searchkit) Fix translations not being applied to the sorting selector ([#215](https://github.com/cessda/cessda.cdc.versions/issues/215))
 
 ## [2.2.1] - 2020-05-04
-
-Searchkit - [10.5281/zenodo.3786300](https://zenodo.org/record/3786300)
-
-OSMH Consumer Indexer - [10.5281/zenodo.3786356](https://zenodo.org/record/3786356)
-
-OSMH Handler Nesstar - [10.5281/zenodo.3786438](https://zenodo.org/record/3786438)
-
-OSMH Handler OAI-PMH - [10.5281/zenodo.3786446](https://zenodo.org/record/3786446)
 
 ### Added
 
