@@ -18,6 +18,27 @@ For details of all the changes, see the linked CHANGELOGS of the various compone
 - [cmv.console CHANGELOG](https://github.com/cessda/cessda.cmv.console/blob/main/CHANGELOG.md)
 - [metadata.harvester CHANGELOG](https://github.com/cessda/cessda.eqb.metadata.harvester/blob/main/CHANGELOG.md)
 
+## [3.5.0] - 2024-01-30
+
+### Added
+
+- Added a link to access the data of the study
+- Added randomly chosen keywords below each result in the results list
+- Implemented CDC to ELSST integration
+- Modified ELSST link if it contains known prefix to add *clang* parameter
+
+### Changed
+
+- Use a normalised field for the "Topic and Keywords" filter
+- Shortened the abstract in the results list
+- Adjusted responsive placement of buttons on results in the results page
+- Check that keywords exist for result before adding an element for them
+
+### Fixed
+
+- Fixed Panel elements incorrectly collapsing when a space character is entered
+- Fixed text overflow and underflow issues
+
 ## [3.4.1] - 2023-09-26
 
 ### Changed
