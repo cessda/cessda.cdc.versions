@@ -73,14 +73,13 @@ Use the restore function of the [Jenkins ES backup job](https://jenkins.cessda.e
 
 ## Checking the CDC XML store
 
-When the datacatalogue harvests from remote repositories, it stores the responses as XML files in a Google Cloud storage bucket. This can be accessed via the Google Cloud console, or using `gsutil` on the command line ([`gsutil` documentation](https://cloud.google.com/storage/docs/gsutil)). The storage bucket is located at [gs://cessda-cdc-aggregator-storage](https://console.cloud.google.com/storage/browser/cessda-cdc-aggregator-storage).
+The Data Catalogue stores harvested XML files from remote repositories in a Google Cloud storage bucket. This can be accessed via the Google Cloud console, or using `gsutil` on the command line ([`gsutil` documentation](https://cloud.google.com/storage/docs/gsutil)). The storage bucket is located at [gs://cessda-cdc-aggregator-storage](https://console.cloud.google.com/storage/browser/cessda-cdc-aggregator-storage).
 
-The harvested XML files are stored in 3 folders:
+The harvested XML files are stored in 2 folders:
 
-- Wrapped (with the OAI-PMH envelope)
-- Unwrapped (with the OAI-PMH envelope stripped, keeping only the raw DDI metadata)
-- Validated (with the OAI-PMH envelope, passed CMV validation)
+- Source (all harvested OAI-PMH metadata)
+- Validated (metadata that has passed XSD and CMV validation)
 
 Repository configuration is stored in `pipeline.json` alongside the harvested XML files. The `pipeline.json` files are created by the harvester and consumed by downstream components.
 
-The store should maintain itself, deleting records when they are removed from endpoints.
+The store should maintain itselfv automatically, deleting records when they are removed from endpoints.
