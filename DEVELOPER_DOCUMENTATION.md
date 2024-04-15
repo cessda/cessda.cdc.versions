@@ -67,6 +67,7 @@ See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/re
 | `studyUrl` | The URL of the study description page in the SP's catalogue |
 | `studyNumber` | |
 | `fileLanguages` | A string array of the languages that the source data file is available in |
+| `funding` | An array of objects describing the funding information of the study |
 | `typeOfTimeMethods` | An array of vocabulary objects describing the type of time methods used |
 | `typeOfSamplingProcedures` | An array of vocabulary objects describing the sampling procedures used in the study |
 | `publisher` | A publisher object describing the publisher of the study |
@@ -77,15 +78,6 @@ See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/re
 | `langAvailableIn` | An array of strings describing the languages the metadata description of the study is available in |
 | `studyXmlSourceUrl` | The URL of the OAI-PMH repository where the source of the metadata is located |
 | `universes` | The universes that were studied in the study |
-
-### Vocabulary Object Definition
-
-| Field Name | Description |
-| ---------- | ----------- |
-| `vocab` | The name of the vocabulary |
-| `vocabUri` | The URI of the vocabulary (but not the URI of the item) |
-| `id` | The ID of the item in the vocabulary being referenced |
-| `term` | The text content of the item in the vocabulary |
 
 ### Country Object Definition
 
@@ -102,6 +94,13 @@ See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/re
 | `dataCollectionFreeText` | The text describing the data collection |
 | `event` | The event corresponding to this data collection |
 
+### Funding Object Definition
+
+| Field Name | Description |
+| ---------- | ----------- |
+| `agency` | The agency responsible for the funding |
+| `grantNumber` | The grant number of the studies's funding |
+
 ### Persistent Identifier Object Definition
 
 | Field Name | Description |
@@ -115,6 +114,15 @@ See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/re
 | ---------- | ----------- |
 | `abbr` | The short name or abbreviation of the publisher |
 | `publisher` | The full name of the publisher |
+
+### Vocabulary Object Definition
+
+| Field Name | Description |
+| ---------- | ----------- |
+| `vocab` | The name of the vocabulary |
+| `vocabUri` | The URI of the vocabulary (but not the URI of the item) |
+| `id` | The ID of the item in the vocabulary being referenced |
+| `term` | The text content of the item in the vocabulary |
 
 ## Adding a new field to the CDC
 

@@ -23,7 +23,7 @@ See <https://github.com/cessda/cessda.metadata.harvester/blob/main/README.md> fo
 
 ## Managing the Elasticsearch (ES) indices
 
-The Elasticsearch cluster used to run the Data Catalogue is available on the catalogues endpoint, i.e. at <https://datacatalogue.cessda.eu/es/>. This endpoint is password protected (the password can be found in 1Password).
+The Elasticsearch cluster used to run the Data Catalogue is available on the catalogues endpoint, i.e. at `https://datacatalogue.cessda.eu/es/`. This endpoint is password protected (the password can be found in 1Password).
 
 To check that language indexes have been created, perform a `GET /_cat/indices` request to Elasticsearch (`https://datacatalogue.cessda.eu/es/_cat/indices`). This should return a result that looks like this.
 
