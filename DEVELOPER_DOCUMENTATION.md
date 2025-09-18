@@ -143,14 +143,19 @@ See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/re
 
 ## Pipeline Metadata Model
 
-| Field Name        | Type   | Description                                                          |
-| ----------------- | ------ | -------------------------------------------------------------------- |
-| `code`            | String | A short identifier for a repository                                  |
-| `name`            | String | A friendly name of the repository to be displayed in user interfaces |
-| `url`             | URI    | The location of the repositories OAI-PMH endpoint                    |
-| `setSpec`         | String | The setSpec used when harvesting the OAI-PMH repository              |
-| `metadataPrefix`  | String | The metadata prefix used when harvesting the OAI-PMH repository      |
-| `ddiVersion`      | String | The DDI version harvested from the OAI-PMH repository - UNUSED       |
-| `profile`         | URI    | The URL of CMV profile used to validate the metadata                 |
-| `validationGate`  | String | The CMV validation gate used when validating the metadata            |
-| `defaultLanguage` | String | The ISO language code used to map elements missing language metadata |
+| Field Name        | Type     | Description                                                            |
+| ----------------- | -------- | ---------------------------------------------------------------------- |
+| `code`            | String   | A short identifier for a repository                                    |
+| `name`            | String   | A friendly name of the repository to be displayed in user interfaces   |
+| `url`             | URI      | The location of the repository's OAI-PMH endpoint                      |
+| `setSpec`         | String   | The setSpec used when harvesting the OAI-PMH repository                |
+| `metadataPrefix`  | String   | The metadata prefix used when harvesting the OAI-PMH repository        |
+| `ddiVersion`      | String   | **UNUSED** - The DDI version harvested from the OAI-PMH repository     |
+| `profile`         | URI      | The URL of CMV profile used to validate the metadata                   |
+| `validationGate`  | String   | The CMV validation gate used when validating the metadata              |
+| `defaultLanguage` | String   | The ISO language code used to map elements missing language attributes |
+| `role`            | String[] | The tools which the metadata will be imported into                     |
+
+Current acceptable values for `role` are `CDC` and `EQB`.
+
+`ddiVersion` is now unused as the version of DDI used can be easily derived from the XML namespaces.
