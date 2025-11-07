@@ -8,8 +8,7 @@ The various Jenkins jobs in the Jenkins [CDC](https://jenkins.cessda.eu/view/CDC
 
 ## Harvesting Runs
 
-1. **Full run** - Triggered from the `cdc-agg-harvester-full` CronJob.  Does a full harvest of all records for all configured endpoints (see 'add endpoint/update URL' for endpoint configuration details).
-1. **Incremental run** - Triggered from the `cdc-agg-harvester-incremental` job. Runs daily.  Does an incremental harvest and ingestion of records for all configured endpoints, based on the most recent ingested lastModified date.
+1. **Full run** - Triggered from the `cdc-agg-harvester-full` CronJob.  Does a full harvest of all records for all configured endpoints (see 'add endpoint/update URL' for endpoint configuration details).21. **Incremental run** - Triggered from the `cdc-agg-harvester-incremental` job. Runs daily.  Does an incremental harvest and ingestion of records for all configured endpoints, based on the most recent ingested lastModified date.
 
 ### Adding a new endpoint
 
@@ -141,3 +140,22 @@ See <https://github.com/cessda/cessda.cdc.osmh-indexer.cmm/blob/main/src/main/re
 - Add field and normalisation (`getStudyModel()`) to  `common/metadata.ts`
 	- Once normalised, there should be no instances of `undefined`
 - Add display information to `src/components/Detail.tsx`
+
+## Pipeline Metadata Model
+
+| Field Name        | Type     | Description                                                            |
+| ----------------- | -------- | ---------------------------------------------------------------------- |
+| `code`            | String   | A short identifier for a repository                                    |
+| `name`            | String   | A friendly name of the repository to be displayed in user interfaces   |
+| `url`             | URI      | The location of the repository's OAI-PMH endpoint                      |
+| `setSpec`         | String   | The setSpec used when harvesting the OAI-PMH repository                |
+| `metadataPrefix`  | String   | The metadata prefix used when harvesting the OAI-PMH repository        |
+| `ddiVersion`      | String   | **UNUSED** - The DDI version harvested from the OAI-PMH repository     |
+| `profile`         | URI      | The URL of CMV profile used to validate the metadata                   |
+| `validationGate`  | String   | The CMV validation gate used when validating the metadata              |
+| `defaultLanguage` | String   | The ISO language code used to map elements missing language attributes |
+| `role`            | String[] | The tools which the metadata will be imported into                     |
+
+Current acceptable values for `role` are `CDC` and `EQB`.
+
+`ddiVersion` is now unused as the version of DDI used can be easily derived from the XML namespaces.
